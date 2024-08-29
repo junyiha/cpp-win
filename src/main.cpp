@@ -22,8 +22,33 @@
 #include "QtWidgets/QApplication"
 #include "QPushButton"
 
+// spdlog
+#include "spdlog/spdlog.h"
+#include "spdlog/sinks/basic_file_sink.h"
+
+void InitLogger()
+{
+    auto logger = spdlog::basic_logger_mt("file_logger", "logs.txt");
+    spdlog::flush_every(std::chrono::milliseconds(100));
+    spdlog::flush_on(spdlog::level::info);
+    logger->info("This is an info message");
+
+}
+
 int main(int argc, char* argv[])
 {
+    InitLogger();
+
+    spdlog::info("Welecom cpp win project!!!\n");
+    auto logger = spdlog::get("file_logger");
+    if (logger)
+    {
+        logger->warn("This is a warning message from the same logger");
+    }
+    else 
+    {
+        spdlog::error("Logger not found");
+    }
     std::cerr << "Hello world!\n";
     if (argc <=1)
     {
