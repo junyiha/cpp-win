@@ -12,6 +12,7 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
+#include <bitset>
 
 // opencv
 #include "opencv2/opencv.hpp"
@@ -77,9 +78,103 @@ int TestQt(int argc, char* argv[])
     return app.exec();
 }
 
+int16_t SpliceByte(uint8_t high_byte, uint8_t low_byte)
+{
+    uint16_t result_byte = (static_cast<uint16_t>(high_byte) << 8) | low_byte;
+
+    return static_cast<int16_t>(result_byte);
+}
+
+void TestBit()
+{
+    uint8_t val{0b0000'1010};
+    uint8_t res = val & 0b0000'0011;
+
+    std::cerr << "val: " << static_cast<int>(val) << ", res: " << static_cast<int>(res) << "\n";
+
+    std::vector<uint8_t> arr{0b0000'1010, 0b0000'0010, 0b0000'0010, 0b0000'0010};
+    std::for_each(arr.begin(), arr.end(), [](uint8_t val){std::cerr << static_cast<int>(val) << ",";});
+
+    uint8_t high_byte = arr.at(1);
+    uint8_t low_byte = arr.at(2);
+
+    uint16_t result_byte = (static_cast<uint16_t>(high_byte) << 8) | low_byte;
+    std::cerr << "hight byte: " << std::bitset<8>(high_byte) << ", low byte: " << std::bitset<8>(low_byte) << ", result: " << std::bitset<16>(result_byte) << "\n";
+
+    std::vector<uint8_t> buf(8, 0);
+
+    buf[0] = static_cast<uint8_t>(buf.size());
+    buf[1] = 0x04;
+    buf[2] = 0x0F;
+    buf[3] = 0x00;
+    buf[4] = 0x0A;
+    buf[5] = 0x01;
+    buf[6] = 0x08;
+
+    buf[7] = std::accumulate(buf.begin(), buf.end(), 0);
+    std::for_each(buf.begin(), buf.end(), [](uint8_t val){std::cerr << "val: " << static_cast<int>(val) << ", ";});
+}
+
+struct Data_t
+{
+    std::vector<int> data;
+    Data_t()
+    {
+        data.resize(6);
+    }
+};
+
+void TestBasic()
+{
+    Data_t data;
+    
+
+    if (0)
+    {
+        std::cerr << "0 is true\n";
+    }
+    else 
+    {
+        std::cerr << "0 is false\n";
+    }
+
+    int temp_val_x = 0;
+    int temp_val_y = 0;
+    int temp_val_z = 0;
+    int temp_val_rx = 0;
+    int temp_val_ry = 0;
+    int temp_val_rz = 0;
+
+    if (temp_val_x || temp_val_y || temp_val_z || 
+        temp_val_rx || temp_val_ry || temp_val_rz)
+    {
+        std::cerr << "0 is true\n";
+    }
+    else 
+    {
+        std::cerr << "0 is false\n";
+    }
+
+    temp_val_y = 1;
+    if (temp_val_x || temp_val_y || temp_val_z || 
+        temp_val_rx || temp_val_ry || temp_val_rz)
+    {
+        std::cerr << "true\n";
+    }
+    else 
+    {
+        std::cerr << "false\n";
+    }
+}
+
 int main(int argc, char* argv[])
 {
     InitLogger();
+    
+    TestBasic();
+
+    TestBit();
+    return 0;
 
     spdlog::info("Welecom cpp win project!!!\n");
     auto logger = spdlog::get("file_logger");
