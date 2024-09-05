@@ -28,6 +28,10 @@
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/basic_file_sink.h"
 
+// 
+#include "GlobalVariable.h"
+#include "temp.h"
+
 void InitLogger()
 {
     auto logger = spdlog::basic_logger_mt("file_logger", "D:/logs.txt");
@@ -68,6 +72,12 @@ int TestQt(int argc, char* argv[])
 {
     QVector<int> arr{1, 2, 3};
     std::for_each(arr.begin(), arr.end(), [](int num){std::cerr << num << "\n";});
+    int c_arr[3];
+    arr.data();
+    for (int i = 0; i < 3; i++)
+    {
+        std::cerr << c_arr[i] << ",";
+    }
     
     QApplication app(argc, argv);
     QWidget w;
@@ -128,6 +138,10 @@ void TestBasic()
 {
     Data_t data;
     
+    for (int i = 0; i < 6; i++)
+    {
+        std::cerr << POSITION_HOME_ARR[i] << "\n";
+    }
 
     if (0)
     {
