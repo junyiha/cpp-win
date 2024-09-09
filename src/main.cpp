@@ -34,7 +34,7 @@
 
 void InitLogger()
 {
-    auto logger = spdlog::basic_logger_mt("file_logger", "D:/logs.txt");
+    auto logger = spdlog::basic_logger_mt("file_logger", "logs.txt");
     spdlog::flush_every(std::chrono::milliseconds(100));
     spdlog::flush_on(spdlog::level::info);
     logger->info("This is an info message");
@@ -179,6 +179,9 @@ void TestBasic()
     {
         std::cerr << "false\n";
     }
+
+    std::vector<int> tmp_arr(10);
+    std::vector<int> tmp_arr2{0, 0, 1, 0};
 }
 
 int main(int argc, char* argv[])
