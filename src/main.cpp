@@ -31,6 +31,7 @@
 // 
 #include "GlobalVariable.h"
 #include "temp.h"
+#include "test.h"
 
 void InitLogger()
 {
@@ -84,6 +85,11 @@ int TestQt(int argc, char* argv[])
     w.show();
     auto obj = new QPushButton;
     std::clog << "QPushButton className(): " << obj->metaObject()->className() << "\n";
+
+    QMainWindow main_windows;
+    Ui_MainWindow ui;
+    ui.setupUi(&main_windows);
+    main_windows.show();
 
     return app.exec();
 }
@@ -191,6 +197,7 @@ int main(int argc, char* argv[])
     TestBasic();
 
     TestBit();
+    TestQt(argc, argv);
     return 0;
 
     spdlog::info("Welecom cpp win project!!!\n");
@@ -214,5 +221,5 @@ int main(int argc, char* argv[])
     
     TestOpencv(path);
 
-    return TestQt(argc, argv);
+    return 0;
 }

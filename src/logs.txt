@@ -1,1 +1,6 @@
-[2024-09-08 16:25:10.886] [file_logger] [info] This is an info message
+[2024-09-09 16:02:49.540] [file_logger] [info] This is an info message
+[2024-09-09 16:03:05.856] [file_logger] [info] This is an info message
+[2024-09-09 16:03:05.859] [file_logger] [warning] This is a warning message from the same logger
+[2024-09-09 16:03:08.069] [file_logger] [info] camera is opened!
+[2024-09-09 16:03:56.351] [file_logger] [info] This is an info message
+[2024-09-09 16:04:13.184] [file_logger] [info] This is an info message
