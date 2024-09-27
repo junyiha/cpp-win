@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file main.cpp
  * @author your name (you@domain.com)
  * @brief 
@@ -13,6 +13,8 @@
 #include <algorithm>
 #include <string>
 #include <bitset>
+#include <chrono>
+#include <future>
 
 // opencv
 #include "opencv2/opencv.hpp"
@@ -190,11 +192,74 @@ void TestBasic()
     std::vector<int> tmp_arr2{0, 0, 1, 0};
 }
 
+void DeviceRun()
+{
+    std::this_thread::sleep_for(std::chrono::seconds(10));
+    spdlog::warn("device done");
+}
+
+void CallDeviceRun()
+{
+    std::async(std::launch::async, DeviceRun);
+}
+
+int DeviceFlag = 0;
+
+void TestTimer()
+{
+    auto log = spdlog::get("file_logger");
+    int count{0};
+    while (true)
+    {
+        if (count > 5)
+        {
+            CallDeviceRun();
+            count = 0;
+        }
+
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        spdlog::info("loop running...");
+        count++;
+    }
+}
+
+void setValue(std::promise<int>& prom) {
+    // 模拟延迟设置值
+    std::this_thread::sleep_for(std::chrono::seconds(20));
+    prom.set_value(42);
+}
+
+// 异步任务函数
+int performAsyncTask() {
+    // 模拟耗时操作
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+    return 42;
+}
+
+void TestFuture()
+{
+    // 启动异步任务
+    std::future<int> result = std::async(std::launch::async, performAsyncTask);
+
+    // 在主线程中进行其他操作
+    std::cout << "正在执行其他任务..." << std::endl;
+
+    // 等待异步任务完成并获取结果
+    int asyncResult = result.get();
+    std::cout << "异步任务的结果是: " << asyncResult << std::endl;
+}
+
 int main(int argc, char* argv[])
 {
     InitLogger();
     
     TestBasic();
+
+    TestFuture();
+    return 0;
+
+    TestTimer();
+    return 0;
 
     TestBit();
     TestQt(argc, argv);
