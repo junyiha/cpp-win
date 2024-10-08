@@ -1,0 +1,1664 @@
+[2024-08-28 10:48:58.686] [logger] [info] State Machine construction!
+
+[2024-08-28 10:48:58.686] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:48:58.687] [logger] [info] input manual command:
+
+[2024-08-28 10:48:58.687] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:48:59.697] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:48:59.697] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:49:00.699] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:49:00.699] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:49:01.714] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:49:01.714] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:49:02.417] [logger] [info] input command: P
+
+[2024-08-28 10:49:02.418] [logger] [info] input manual command:
+
+[2024-08-28 10:49:06.739] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 262: 执行指令不合法!指令: 空指令
+[2024-08-28 10:49:07.741] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:49:08.750] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:49:09.751] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:49:10.766] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:49:11.771] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:49:12.786] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:49:13.801] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:49:14.805] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:49:15.816] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:51:19.084] [logger] [info] State Machine construction!
+
+[2024-08-28 10:51:19.084] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:51:19.085] [logger] [info] input manual command:
+
+[2024-08-28 10:51:19.085] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:51:20.100] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:51:20.100] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:51:21.104] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:51:21.104] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:51:22.104] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:51:22.120] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:51:23.106] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:51:23.121] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:51:23.608] [logger] [info] input command: P
+
+[2024-08-28 10:51:23.608] [logger] [info] input manual command:
+
+[2024-08-28 10:51:24.125] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:51:25.134] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:51:26.141] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:51:27.146] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:51:28.124] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 262: 执行指令不合法!指令: 空指令
+[2024-08-28 10:51:28.155] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 10:51:29.134] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:51:29.165] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 10:51:30.138] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:51:30.169] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 10:51:31.145] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:51:31.176] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 10:51:31.737] [logger] [info] input command: p
+
+[2024-08-28 10:51:31.738] [logger] [info] input manual command:
+
+[2024-08-28 10:51:32.183] [logger] [info] state: 定位--待定位,command: 定位
+
+
+[2024-08-28 10:51:33.192] [logger] [info] state: 定位--待定位,command: 定位
+
+
+[2024-08-28 10:51:34.201] [logger] [info] state: 定位--待定位,command: 定位
+
+
+[2024-08-28 10:51:35.206] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 10:51:36.208] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 10:51:37.211] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 10:51:38.218] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 10:51:39.162] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 293: 执行指令不合法!指令: 空指令
+[2024-08-28 10:51:39.224] [logger] [info] state: 待吸合--空状态,command: 空指令
+
+
+[2024-08-28 10:51:40.167] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 409: 执行指令不合法!指令: 空指令
+[2024-08-28 10:51:40.230] [logger] [info] state: 待吸合--空状态,command: 空指令
+
+
+[2024-08-28 10:51:41.174] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 409: 执行指令不合法!指令: 空指令
+[2024-08-28 10:51:41.236] [logger] [info] state: 待吸合--空状态,command: 空指令
+
+
+[2024-08-28 10:51:42.181] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 409: 执行指令不合法!指令: 空指令
+[2024-08-28 10:51:42.243] [logger] [info] state: 待吸合--空状态,command: 空指令
+
+
+[2024-08-28 10:51:43.188] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 409: 执行指令不合法!指令: 空指令
+[2024-08-28 10:51:43.250] [logger] [info] state: 待吸合--空状态,command: 空指令
+
+
+[2024-08-28 10:51:44.195] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 409: 执行指令不合法!指令: 空指令
+[2024-08-28 10:51:44.258] [logger] [info] state: 待吸合--空状态,command: 空指令
+
+
+[2024-08-28 10:51:45.202] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 409: 执行指令不合法!指令: 空指令
+[2024-08-28 10:51:45.266] [logger] [info] state: 待吸合--空状态,command: 空指令
+
+
+[2024-08-28 10:51:46.035] [logger] [info] input command: t
+
+[2024-08-28 10:51:46.035] [logger] [info] input manual command:
+
+[2024-08-28 10:51:46.212] [logger] [warning] 停止运行，并进行状态跳转
+
+[2024-08-28 10:51:46.276] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:51:47.221] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:51:47.284] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:51:48.231] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:51:48.294] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:51:49.237] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:51:49.251] [logger] [info] input command: P
+
+[2024-08-28 10:51:49.252] [logger] [info] input manual command:
+
+[2024-08-28 10:51:49.300] [logger] [info] state: 手动--就绪,command: 调平
+
+
+[2024-08-28 10:51:50.303] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:51:51.305] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:51:52.309] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:51:53.312] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:51:54.251] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 262: 执行指令不合法!指令: 空指令
+[2024-08-28 10:51:54.328] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 10:51:55.256] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:51:55.335] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 10:51:56.263] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:51:56.342] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 10:51:56.382] [logger] [info] input command: p
+
+[2024-08-28 10:51:56.383] [logger] [info] input manual command:
+
+[2024-08-28 10:51:57.346] [logger] [info] state: 定位--待定位,command: 定位
+
+
+[2024-08-28 10:51:58.354] [logger] [info] state: 定位--待定位,command: 定位
+
+
+[2024-08-28 10:51:59.358] [logger] [info] state: 定位--待定位,command: 定位
+
+
+[2024-08-28 10:52:00.359] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 10:52:01.375] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 10:52:02.381] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 10:52:03.388] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 10:52:04.285] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 293: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:04.394] [logger] [info] state: 待吸合--空状态,command: 空指令
+
+
+[2024-08-28 10:52:05.288] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 409: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:05.399] [logger] [info] state: 待吸合--空状态,command: 空指令
+
+
+[2024-08-28 10:52:06.293] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 409: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:06.403] [logger] [info] state: 待吸合--空状态,command: 空指令
+
+
+[2024-08-28 10:52:07.170] [logger] [info] input command: m
+
+[2024-08-28 10:52:07.170] [logger] [info] input manual command:
+
+[2024-08-28 10:52:07.409] [logger] [info] state: 待吸合--空状态,command: 吸合
+
+
+[2024-08-28 10:52:08.416] [logger] [info] state: 待吸合--空状态,command: 吸合
+
+
+[2024-08-28 10:52:09.428] [logger] [info] state: 待吸合--空状态,command: 吸合
+
+
+[2024-08-28 10:52:10.436] [logger] [info] state: 碰钉--待碰钉,command: 空指令
+
+
+[2024-08-28 10:52:11.320] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 442: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:11.446] [logger] [info] state: 碰钉--待碰钉,command: 空指令
+
+
+[2024-08-28 10:52:12.324] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 442: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:12.450] [logger] [info] state: 碰钉--待碰钉,command: 空指令
+
+
+[2024-08-28 10:52:13.048] [logger] [info] input command: t
+
+[2024-08-28 10:52:13.048] [logger] [info] input manual command:
+
+[2024-08-28 10:52:13.327] [logger] [warning] 停止运行，并进行状态跳转
+
+[2024-08-28 10:52:13.452] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:52:14.332] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:52:14.459] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:52:15.337] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:52:15.464] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:52:16.348] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:52:16.475] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:52:17.357] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:52:17.482] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:52:18.156] [logger] [info] input command: P
+
+[2024-08-28 10:52:18.157] [logger] [info] input manual command:
+
+[2024-08-28 10:52:18.493] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:52:19.499] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:52:20.504] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:52:21.506] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:52:22.384] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 262: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:22.509] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 10:52:23.392] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:23.519] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 10:52:23.878] [logger] [info] input command: p
+
+[2024-08-28 10:52:23.879] [logger] [info] input manual command:
+
+[2024-08-28 10:52:24.523] [logger] [info] state: 定位--待定位,command: 定位
+
+
+[2024-08-28 10:52:25.527] [logger] [info] state: 定位--待定位,command: 定位
+
+
+[2024-08-28 10:52:26.537] [logger] [info] state: 定位--待定位,command: 定位
+
+
+[2024-08-28 10:52:27.545] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 10:52:28.551] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 10:52:29.558] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 10:52:30.565] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 10:52:31.414] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 293: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:31.570] [logger] [info] state: 待吸合--空状态,command: 空指令
+
+
+[2024-08-28 10:52:32.424] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 409: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:32.581] [logger] [info] state: 待吸合--空状态,command: 空指令
+
+
+[2024-08-28 10:52:33.432] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 409: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:33.589] [logger] [info] state: 待吸合--空状态,command: 空指令
+
+
+[2024-08-28 10:52:33.883] [logger] [info] input command: m
+
+[2024-08-28 10:52:33.884] [logger] [info] input manual command:
+
+[2024-08-28 10:52:34.595] [logger] [info] state: 待吸合--空状态,command: 吸合
+
+
+[2024-08-28 10:52:35.602] [logger] [info] state: 待吸合--空状态,command: 吸合
+
+
+[2024-08-28 10:52:36.608] [logger] [info] state: 待吸合--空状态,command: 吸合
+
+
+[2024-08-28 10:52:37.618] [logger] [info] state: 碰钉--待碰钉,command: 空指令
+
+
+[2024-08-28 10:52:38.448] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 442: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:38.620] [logger] [info] state: 碰钉--待碰钉,command: 空指令
+
+
+[2024-08-28 10:52:39.454] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 442: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:39.625] [logger] [info] state: 碰钉--待碰钉,command: 空指令
+
+
+[2024-08-28 10:52:40.461] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 442: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:40.635] [logger] [info] state: 碰钉--待碰钉,command: 空指令
+
+
+[2024-08-28 10:52:41.477] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 442: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:41.649] [logger] [info] state: 碰钉--待碰钉,command: 空指令
+
+
+[2024-08-28 10:52:42.482] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 442: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:42.655] [logger] [info] state: 碰钉--待碰钉,command: 空指令
+
+
+[2024-08-28 10:52:43.490] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 442: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:43.664] [logger] [info] state: 碰钉--待碰钉,command: 空指令
+
+
+[2024-08-28 10:52:44.500] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 442: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:44.674] [logger] [info] state: 碰钉--待碰钉,command: 空指令
+
+
+[2024-08-28 10:52:45.127] [logger] [info] input command: w
+
+[2024-08-28 10:52:45.128] [logger] [info] input manual command:
+
+[2024-08-28 10:52:45.678] [logger] [info] state: 碰钉--碰钉中,command: 空指令
+
+
+[2024-08-28 10:52:46.687] [logger] [info] state: 碰钉--碰钉中,command: 空指令
+
+
+[2024-08-28 10:52:47.701] [logger] [info] state: 碰钉--碰钉中,command: 空指令
+
+
+[2024-08-28 10:52:48.707] [logger] [info] state: 碰钉--碰钉中,command: 空指令
+
+
+[2024-08-28 10:52:49.714] [logger] [info] state: 退出--退出中,command: 空指令
+
+
+[2024-08-28 10:52:50.516] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 523: 执行指令不合法!指令: 空指令
+[2024-08-28 10:52:50.719] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:52:51.529] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:52:51.734] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:52:52.537] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:52:52.742] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:52:53.545] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:52:53.750] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:52:54.552] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:52:54.756] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:52:55.559] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:52:55.763] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:52:56.370] [logger] [info] input command: P
+
+[2024-08-28 10:52:56.371] [logger] [info] input manual command:
+
+[2024-08-28 10:52:56.766] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:52:57.768] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:52:58.770] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:52:59.220] [logger] [info] input command: t
+
+[2024-08-28 10:52:59.220] [logger] [info] input manual command:
+
+[2024-08-28 10:52:59.779] [logger] [info] state: 调平--检测,command: 终止
+
+
+[2024-08-28 10:53:00.574] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 262: 执行指令不合法!指令: 终止
+[2024-08-28 10:53:00.794] [logger] [info] state: 定位--待定位,command: 终止
+
+
+[2024-08-28 10:53:01.578] [logger] [warning] 停止运行，并进行状态跳转
+
+[2024-08-28 10:53:01.798] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:02.586] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:02.806] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:03.588] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:03.808] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:04.593] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:04.813] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:05.597] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:05.820] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:06.607] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:06.829] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:07.613] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:07.832] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:08.621] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:08.842] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:09.625] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:09.847] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:10.634] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:10.854] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:11.642] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:11.861] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:12.649] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:12.868] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:13.653] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:13.872] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:14.659] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:14.880] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:15.664] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:15.884] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:16.669] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:16.887] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:17.672] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:17.834] [logger] [info] input command: P
+
+[2024-08-28 10:53:17.835] [logger] [info] input manual command:
+
+[2024-08-28 10:53:17.894] [logger] [info] state: 手动--就绪,command: 调平
+
+
+[2024-08-28 10:53:18.899] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:53:19.906] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:53:20.908] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:53:21.911] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 10:53:22.694] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 262: 执行指令不合法!指令: 空指令
+[2024-08-28 10:53:22.915] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 10:53:23.699] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:53:23.918] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 10:53:24.702] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:53:24.934] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 10:53:25.712] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:53:25.949] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 10:53:26.717] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:53:26.952] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 10:53:27.725] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:53:27.961] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 10:53:28.736] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:53:28.971] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 10:53:29.741] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 364: 执行指令不合法!指令: 空指令
+[2024-08-28 10:53:29.976] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 10:53:30.436] [logger] [info] input command: p
+
+[2024-08-28 10:53:30.437] [logger] [info] input manual command:
+
+[2024-08-28 10:53:30.981] [logger] [info] state: 定位--待定位,command: 定位
+
+
+[2024-08-28 10:53:31.991] [logger] [info] state: 定位--待定位,command: 定位
+
+
+[2024-08-28 10:53:32.996] [logger] [info] state: 定位--待定位,command: 定位
+
+
+[2024-08-28 10:53:34.008] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 10:53:35.019] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 10:53:36.026] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 10:53:37.029] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 10:53:37.772] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 293: 执行指令不合法!指令: 空指令
+[2024-08-28 10:53:38.038] [logger] [info] state: 待吸合--空状态,command: 空指令
+
+
+[2024-08-28 10:53:38.779] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 409: 执行指令不合法!指令: 空指令
+[2024-08-28 10:53:39.046] [logger] [info] state: 待吸合--空状态,command: 空指令
+
+
+[2024-08-28 10:53:39.783] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 409: 执行指令不合法!指令: 空指令
+[2024-08-28 10:53:40.047] [logger] [info] state: 待吸合--空状态,command: 空指令
+
+
+[2024-08-28 10:53:40.259] [logger] [info] input command: m
+
+[2024-08-28 10:53:40.260] [logger] [info] input manual command:
+
+[2024-08-28 10:53:41.050] [logger] [info] state: 待吸合--空状态,command: 吸合
+
+
+[2024-08-28 10:53:42.059] [logger] [info] state: 待吸合--空状态,command: 吸合
+
+
+[2024-08-28 10:53:43.064] [logger] [info] state: 待吸合--空状态,command: 吸合
+
+
+[2024-08-28 10:53:44.069] [logger] [info] state: 碰钉--待碰钉,command: 空指令
+
+
+[2024-08-28 10:53:44.788] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 442: 执行指令不合法!指令: 空指令
+[2024-08-28 10:53:45.071] [logger] [info] state: 碰钉--待碰钉,command: 空指令
+
+
+[2024-08-28 10:53:45.791] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 442: 执行指令不合法!指令: 空指令
+[2024-08-28 10:53:46.075] [logger] [info] state: 碰钉--待碰钉,command: 空指令
+
+
+[2024-08-28 10:53:46.800] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 442: 执行指令不合法!指令: 空指令
+[2024-08-28 10:53:47.010] [logger] [info] input command: w
+
+[2024-08-28 10:53:47.010] [logger] [info] input manual command:
+
+[2024-08-28 10:53:47.084] [logger] [info] state: 碰钉--待碰钉,command: 自动碰钉
+
+
+[2024-08-28 10:53:48.092] [logger] [info] state: 碰钉--碰钉中,command: 空指令
+
+
+[2024-08-28 10:53:48.638] [logger] [info] input command: t
+
+[2024-08-28 10:53:48.639] [logger] [info] input manual command:
+
+[2024-08-28 10:53:48.814] [logger] [warning] 停止运行，并进行状态跳转
+
+[2024-08-28 10:53:49.101] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:49.823] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:50.105] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:50.825] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:51.121] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:51.841] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:52.123] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:52.848] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:53.129] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:53.852] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:54.138] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:54.862] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 10:53:55.144] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 10:53:55.807] [logger] [info] input command: q
+
+[2024-08-28 10:53:55.863] [logger] [info] quiting...
+
+[2024-08-28 10:53:56.147] [logger] [info] get state thread quiting...
+
+[2024-08-28 11:05:32.796] [logger] [info] State Machine construction!
+
+[2024-08-28 11:05:32.796] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 11:05:32.796] [logger] [info] input manual command:
+
+[2024-08-28 11:05:32.797] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 11:05:33.803] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 11:05:33.804] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 11:05:34.819] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 11:05:34.819] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 11:05:35.396] [logger] [info] input command: P
+
+[2024-08-28 11:05:35.396] [logger] [info] input manual command:
+
+[2024-08-28 11:05:35.825] [logger] [info] state: 调平--检测,command: 调平
+
+
+[2024-08-28 11:05:36.829] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 11:05:37.833] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 11:05:38.841] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 11:05:39.842] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 11:05:39.843] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 266: 执行指令不合法!指令: 空指令
+[2024-08-28 11:05:40.843] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 368: 执行指令不合法!指令: 空指令
+[2024-08-28 11:05:40.843] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 11:05:41.848] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 368: 执行指令不合法!指令: 空指令
+[2024-08-28 11:05:41.848] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 11:05:42.858] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 11:05:42.858] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 368: 执行指令不合法!指令: 空指令
+[2024-08-28 11:05:43.863] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 11:05:43.863] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 368: 执行指令不合法!指令: 空指令
+[2024-08-28 11:05:44.867] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 368: 执行指令不合法!指令: 空指令
+[2024-08-28 11:05:44.867] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 11:05:45.871] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 368: 执行指令不合法!指令: 空指令
+[2024-08-28 11:05:45.871] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 11:05:46.880] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 368: 执行指令不合法!指令: 空指令
+[2024-08-28 11:05:46.880] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 11:05:47.885] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 368: 执行指令不合法!指令: 空指令
+[2024-08-28 11:05:47.885] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 11:05:48.891] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 368: 执行指令不合法!指令: 空指令
+[2024-08-28 11:05:48.891] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 11:05:49.892] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 368: 执行指令不合法!指令: 空指令
+[2024-08-28 11:05:49.907] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 11:05:50.901] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 368: 执行指令不合法!指令: 空指令
+[2024-08-28 11:05:50.916] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 11:05:51.907] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 368: 执行指令不合法!指令: 空指令
+[2024-08-28 11:05:51.923] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 11:05:52.920] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 368: 执行指令不合法!指令: 空指令
+[2024-08-28 11:05:52.936] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 11:05:53.924] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 368: 执行指令不合法!指令: 空指令
+[2024-08-28 11:05:53.939] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 11:05:54.939] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 368: 执行指令不合法!指令: 空指令
+[2024-08-28 11:05:54.955] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 11:05:55.943] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 368: 执行指令不合法!指令: 空指令
+[2024-08-28 11:05:55.959] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 11:05:56.013] [logger] [info] input command: t
+
+[2024-08-28 11:05:56.013] [logger] [info] input manual command:
+
+[2024-08-28 11:05:56.949] [logger] [warning] 停止运行，并进行状态跳转
+
+[2024-08-28 11:05:56.965] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 11:05:57.954] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 11:05:57.970] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 11:05:58.961] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 11:05:58.976] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 11:05:59.112] [logger] [info] input command: P
+
+[2024-08-28 11:05:59.113] [logger] [info] input manual command:
+
+[2024-08-28 11:05:59.982] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 11:06:00.983] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 11:06:01.338] [logger] [info] input command: u
+
+[2024-08-28 11:06:01.339] [logger] [info] input manual command:
+
+[2024-08-28 11:06:01.999] [logger] [info] state: 调平--检测,command: 暂停
+
+
+[2024-08-28 11:06:03.004] [logger] [info] state: 调平--检测,command: 暂停
+
+
+[2024-08-28 11:06:03.980] [logger] [warning] D:\PDRobot-master\Task\StateMachine.cpp 266: 执行指令不合法!指令: 暂停
+[2024-08-28 11:06:04.012] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:05.016] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:06.023] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:07.026] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:08.033] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:09.035] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:10.041] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:11.043] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:12.048] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:13.064] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:14.071] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:15.077] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:16.087] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:17.092] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:18.097] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:19.104] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:20.107] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:21.123] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:22.134] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 11:06:23.139] [logger] [info] state: 定位--待定位,command: 暂停
+
+
+[2024-08-28 15:15:18.909] [logger] [info] State Machine construction!
+
+[2024-08-28 15:15:18.910] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:15:18.910] [logger] [info] input manual command:
+
+[2024-08-28 15:15:18.910] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:15:19.920] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:15:19.920] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:15:20.763] [logger] [info] input command: P
+
+[2024-08-28 15:15:20.764] [logger] [info] input manual command:
+
+[2024-08-28 15:15:20.929] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:21.932] [logger] [info] 调用函数，根据激光数值判断壁面状态
+[2024-08-28 15:15:21.932] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:22.941] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:23.954] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:24.968] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:15:25.945] [logger] [info] 读激光反馈，反馈异常时停止运动，否则继续运动
+[2024-08-28 15:15:25.946] [logger] [info] 反馈正常， stanstill，状态跳转: 调平--检测
+[2024-08-28 15:15:25.976] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:26.954] [logger] [info] 调用函数，根据激光数值判断壁面状态
+[2024-08-28 15:15:26.984] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:27.994] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:29.008] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:30.022] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:15:30.966] [logger] [info] 读激光反馈，反馈异常时停止运动，否则继续运动
+[2024-08-28 15:15:30.967] [logger] [info] 反馈正常， stanstill，状态跳转: 调平--检测
+[2024-08-28 15:15:31.029] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:31.980] [logger] [info] 调用函数，根据激光数值判断壁面状态
+[2024-08-28 15:15:32.042] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:33.054] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:34.066] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:35.076] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:15:35.986] [logger] [info] 读激光反馈，反馈异常时停止运动，否则继续运动
+[2024-08-28 15:15:35.986] [logger] [info] 反馈正常， stanstill，状态跳转: 调平--检测
+[2024-08-28 15:15:36.091] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:36.998] [logger] [info] 调用函数，根据激光数值判断壁面状态
+[2024-08-28 15:15:37.104] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:38.106] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:39.109] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:40.122] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:15:41.009] [logger] [info] 读激光反馈，反馈异常时停止运动，否则继续运动
+[2024-08-28 15:15:41.010] [logger] [info] 反馈正常， stanstill，状态跳转: 调平--检测
+[2024-08-28 15:15:41.132] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:42.017] [logger] [info] 调用函数，根据激光数值判断壁面状态
+[2024-08-28 15:15:42.140] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:43.143] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:44.159] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:45.167] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:15:46.037] [logger] [info] 读激光反馈，反馈异常时停止运动，否则继续运动
+[2024-08-28 15:15:46.037] [logger] [info] 反馈正常， stanstill，状态跳转: 调平--检测
+[2024-08-28 15:15:46.174] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:47.051] [logger] [info] 调用函数，根据激光数值判断壁面状态
+[2024-08-28 15:15:47.176] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:48.177] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:49.180] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:50.188] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:15:51.074] [logger] [info] 读激光反馈，反馈异常时停止运动，否则继续运动
+[2024-08-28 15:15:51.074] [logger] [info] 反馈正常， stanstill，状态跳转: 调平--检测
+[2024-08-28 15:15:51.199] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:52.083] [logger] [info] 调用函数，根据激光数值判断壁面状态
+[2024-08-28 15:15:52.208] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:53.218] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:54.227] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:55.239] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:15:56.097] [logger] [info] 读激光反馈，反馈异常时停止运动，否则继续运动
+[2024-08-28 15:15:56.098] [logger] [info] 反馈正常， stanstill，状态跳转: 调平--检测
+[2024-08-28 15:15:56.252] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:57.104] [logger] [info] 调用函数，根据激光数值判断壁面状态
+[2024-08-28 15:15:57.259] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:58.272] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:15:59.287] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:00.299] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:16:01.125] [logger] [info] 读激光反馈，反馈异常时停止运动，否则继续运动
+[2024-08-28 15:16:01.126] [logger] [info] 反馈正常， stanstill，状态跳转: 调平--检测
+[2024-08-28 15:16:01.313] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:02.132] [logger] [info] 调用函数，根据激光数值判断壁面状态
+[2024-08-28 15:16:02.317] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:03.324] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:04.335] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:05.347] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:16:06.157] [logger] [info] 读激光反馈，反馈异常时停止运动，否则继续运动
+[2024-08-28 15:16:06.158] [logger] [info] 反馈正常， stanstill，状态跳转: 调平--检测
+[2024-08-28 15:16:06.359] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:07.169] [logger] [info] 调用函数，根据激光数值判断壁面状态
+[2024-08-28 15:16:07.375] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:08.382] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:09.387] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:10.395] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:16:11.184] [logger] [info] 读激光反馈，反馈异常时停止运动，否则继续运动
+[2024-08-28 15:16:11.184] [logger] [info] 反馈正常， stanstill，状态跳转: 调平--检测
+[2024-08-28 15:16:11.401] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:12.192] [logger] [info] 调用函数，根据激光数值判断壁面状态
+[2024-08-28 15:16:12.409] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:13.416] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:14.432] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:15.439] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:16:16.217] [logger] [info] 读激光反馈，反馈异常时停止运动，否则继续运动
+[2024-08-28 15:16:16.217] [logger] [info] 反馈正常， stanstill，状态跳转: 调平--检测
+[2024-08-28 15:16:16.452] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:17.218] [logger] [info] 调用函数，根据激光数值判断壁面状态
+[2024-08-28 15:16:17.467] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:18.480] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:19.489] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:20.496] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:16:21.242] [logger] [info] 读激光反馈，反馈异常时停止运动，否则继续运动
+[2024-08-28 15:16:21.242] [logger] [info] 反馈正常， stanstill，状态跳转: 调平--检测
+[2024-08-28 15:16:21.508] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:22.248] [logger] [info] 调用函数，根据激光数值判断壁面状态
+[2024-08-28 15:16:22.510] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:23.522] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:24.527] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:25.542] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:16:26.263] [logger] [info] 读激光反馈，反馈异常时停止运动，否则继续运动
+[2024-08-28 15:16:26.264] [logger] [info] 反馈正常， stanstill，状态跳转: 调平--检测
+[2024-08-28 15:16:26.557] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:27.270] [logger] [info] 调用函数，根据激光数值判断壁面状态
+[2024-08-28 15:16:27.567] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:28.577] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:29.587] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:30.596] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:16:31.297] [logger] [info] 读激光反馈，反馈异常时停止运动，否则继续运动
+[2024-08-28 15:16:31.297] [logger] [info] 反馈正常， stanstill，状态跳转: 调平--检测
+[2024-08-28 15:16:31.597] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:32.298] [logger] [info] 调用函数，根据激光数值判断壁面状态
+[2024-08-28 15:16:32.599] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:33.601] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:34.614] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:16:57.646] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:17:02.379] [logger] [info] 读激光反馈，反馈异常时停止运动，否则继续运动
+[2024-08-28 15:17:02.379] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:17:02.379] [logger] [info] 反馈正常， stanstill，状态跳转: 调平--检测
+[2024-08-28 15:17:03.381] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:17:12.996] [logger] [info] 调用函数，根据激光数值判断壁面状态
+[2024-08-28 15:17:12.996] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:17:14.007] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:17:15.012] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:18:13.712] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:18:22.381] [logger] [info] state: 调平--运动,command: 空指令
+
+
+[2024-08-28 15:18:25.327] [logger] [info] 读激光反馈，反馈异常时停止运动，否则继续运动
+[2024-08-28 15:19:11.436] [logger] [info] State Machine construction!
+
+[2024-08-28 15:19:11.436] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:11.436] [logger] [info] input manual command:
+
+[2024-08-28 15:19:11.436] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:12.443] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:12.443] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:13.150] [logger] [info] input command: P
+
+[2024-08-28 15:19:13.150] [logger] [info] input manual command:
+
+[2024-08-28 15:19:13.450] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:19:14.459] [logger] [info] 调用函数，根据激光数值判断壁面状态
+[2024-08-28 15:19:14.459] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:19:15.474] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:19:16.484] [logger] [info] state: 调平--检测,command: 空指令
+
+
+[2024-08-28 15:19:20.419] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:21.428] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:21.428] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:22.440] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:22.440] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:23.452] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:23.452] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:24.467] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:24.467] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:25.470] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:25.470] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:26.477] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:26.477] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:27.490] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:27.490] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:28.493] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:28.494] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:29.498] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:29.498] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:30.502] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:30.502] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:31.509] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:31.509] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:32.512] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:32.512] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:33.522] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:33.522] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:34.525] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:34.525] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:35.537] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:35.537] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:36.540] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:36.540] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:37.551] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:37.551] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:38.564] [logger] [info] 定位--待定位状态下 空指令，不执行任何操作
+[2024-08-28 15:19:38.564] [logger] [info] state: 定位--待定位,command: 空指令
+
+
+[2024-08-28 15:19:39.056] [logger] [info] input command: p
+
+[2024-08-28 15:19:39.056] [logger] [info] input manual command:
+
+[2024-08-28 15:19:39.573] [logger] [info] 定位指令，状态跳转: 定位--检测
+[2024-08-28 15:19:39.573] [logger] [info] state: 定位--待定位,command: 定位
+
+
+[2024-08-28 15:19:40.579] [logger] [info] 调用函数，计算边线偏差，根据偏差判断是否完成调整，继续调整，停止调整
+[2024-08-28 15:19:40.579] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 15:19:41.586] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 15:19:42.596] [logger] [info] state: 定位--检测,command: 空指令
+
+
+[2024-08-28 15:19:43.593] [logger] [warning] 停止运行，并进行状态跳转
+
+[2024-08-28 15:19:43.608] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:44.604] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:44.620] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:45.609] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:45.624] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:46.622] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:46.638] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:47.636] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:47.652] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:48.649] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:48.664] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:49.655] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:49.670] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:50.664] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:50.679] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:51.666] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:51.682] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:52.682] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:52.697] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:53.695] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:53.711] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:54.706] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:54.722] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:55.713] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:55.729] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:56.723] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:56.739] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:57.734] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:57.749] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:58.737] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:58.752] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:19:59.744] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:19:59.759] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:00.749] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:00.765] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:01.762] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:01.778] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:02.769] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:02.784] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:03.773] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:03.790] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:04.783] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:04.800] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:05.797] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:05.813] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:06.810] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:06.825] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:07.826] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:07.826] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:08.832] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:08.832] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:09.834] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:09.834] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:10.843] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:10.843] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:11.852] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:11.852] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:12.857] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:12.858] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:13.862] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:13.862] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:14.867] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:14.867] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:15.878] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:15.878] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:16.882] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:16.882] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:17.886] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:17.886] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:18.896] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:18.896] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:19.905] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:19.905] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:20.910] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:20.910] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:21.925] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:21.925] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:22.932] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:22.932] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:23.945] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:23.945] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:24.948] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:24.948] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:25.962] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:25.962] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:26.972] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:26.972] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:27.981] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:27.981] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:28.986] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:28.986] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:29.999] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:29.999] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:31.014] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:31.014] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:32.024] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:32.024] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:33.039] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:33.039] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:34.049] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:34.049] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:35.064] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:35.064] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:36.079] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:36.079] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:37.089] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:37.089] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:38.103] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:38.103] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:39.108] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:39.108] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:40.118] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:40.118] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:41.131] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:41.132] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:42.142] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:42.142] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:43.157] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:43.157] [logger] [info] state: 手动--就绪,command: 空指令
+
+
+[2024-08-28 15:20:44.167] [logger] [info] 所有手动操作指令,等待手动触发...
+
+[2024-08-28 15:20:44.167] [logger] [info] state: 手动--就绪,command: 空指令
+
+
