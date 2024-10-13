@@ -11,4 +11,3 @@ void InitLogger()
 
 	spdlog::register_logger(logger);
 }
-
