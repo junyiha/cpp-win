@@ -50,6 +50,7 @@ namespace APP
 
 	private slots:
 		void ButtonDown();
+		void CloseButton();
 
 	private:
 		Ui::NewMainWindow *ui;

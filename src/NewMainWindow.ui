@@ -52,6 +52,19 @@
     <string>TextLabel</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="closeButton">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>410</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>close</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

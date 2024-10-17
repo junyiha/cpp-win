@@ -48,6 +48,7 @@ namespace APP
 	void NewMainWindow::ConnectSlotFunction()
 	{
 		connect(ui->pushButton, &QPushButton::clicked, this, &NewMainWindow::ButtonDown, Qt::UniqueConnection);
+		connect(ui->closeButton, &QPushButton::clicked, this, &NewMainWindow::CloseButton, Qt::UniqueConnection);
 	}
 
 	void NewMainWindow::PutImage()
@@ -83,6 +84,11 @@ namespace APP
 		PutImage();
 	}
 
+	void NewMainWindow::CloseButton()
+	{
+		ui->label->clear();
+	}
+
 	int RunAPP(int argc, char *argv[])
 	{
 		QApplication a(argc, argv);
@@ -99,7 +105,7 @@ namespace APP
 	{
 		QString path{ "C:/Users/anony/Desktop/无标题.png" };
 
-		qDebug() << "Current Directory: " << QDir::currentPath();
+		std::cerr << "Current Directory: " << QDir::currentPath().toStdString();
 
 		if (QFile::exists(QString::fromLocal8Bit("C:/Users/anony/Desktop/无标题.png")) == false)
 		{
