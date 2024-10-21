@@ -1,0 +1,38 @@
+velLine: 5
+velRotate: 0.5
+CYLINDER_INDEX: 5
+STEER_LEFT_INDEX: 11
+STEER_RIGHT_INDEX: 13
+WHEEL_LEFT_INDEX: 12
+WHEEL_RIGHT_INDEX: 14
+TOOL_LIFTING: 9
+Lift_Distance_In_Parallel: 90.0
+Max_Deviation_In_Parallel: 50.0
+Min_Deviation_In_Parallel: 5.0
+Distance_work: 90
+Lift_Distance_In_FitBoard: 6.0
+Max_Deviation_In_FitBoard: 20.0
+Min_Deviation_In_FitBoard: 6.0
+Line_Deviation_Threshold: 6
+end_vel_limit: [5, 5, 5, 0.05, 0.05, 0.05]
+end_vel_position: [1, 1, 1, 0.05, 0.05, 0.05]
+home_point:
+  - 2
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+prepare_point: [97.45, 46.27, 11.63, 9.75, 78.81, 1043.36, 1194.38, 0.55, -62.84, 885.0, 554.58]
+robot_ip: 192.168.1.130
+robot_port: 6999
+IOA_ip: 192.168.1.201
+IOA_port: 5999
+test:
+  brief: ≤‚ ‘
+  value: 23

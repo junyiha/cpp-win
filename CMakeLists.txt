@@ -27,9 +27,9 @@ find_package(Qt5 COMPONENTS
         Xml
         REQUIRED)
 
-aux_source_directory(${CMAKE_SOURCE_DIR}/src src_files)
+add_subdirectory(${CMAKE_SOURCE_DIR}/ThirdParty/yaml-cpp-0.8.0)
 
-# qt5_wrap_ui(src_files ${CMAKE_SOURCE_DIR}/src/NewMainWindow.ui)
+aux_source_directory(${CMAKE_SOURCE_DIR}/src src_files)
 
 message(STATUS ${src_files})
 
@@ -37,6 +37,7 @@ add_executable(${PROJECT_NAME} ${src_files})
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/src
 												   ${CMAKE_SOURCE_DIR}/ThirdParty/
+                                                   ${CMAKE_SOURCE_DIR}/ThirdParty/yaml-cpp-0.8.0/include/
 							)
 
 # qt5
@@ -47,3 +48,6 @@ target_link_libraries(${PROJECT_NAME}
         Qt5::Network
         Qt5::Xml
 )
+
+# yaml-0.8.0
+target_link_libraries(${PROJECT_NAME} yaml-cpp::yaml-cpp)

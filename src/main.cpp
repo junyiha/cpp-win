@@ -7,6 +7,7 @@
  *********************************************************************/
 #include "base_headers.hpp"
 #include "application.hpp"
+#include "configuration.hpp"
 
 
 int main(int argc, char* argv[])
@@ -17,6 +18,8 @@ int main(int argc, char* argv[])
 	log->info("test spdlog logger");
 
 	std::clog << "Hello, world\n";
+
+	Config::ConfigurationMain();
 
 	APP::RunAPP(argc, argv);
 
