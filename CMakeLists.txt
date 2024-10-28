@@ -38,6 +38,8 @@ add_executable(${PROJECT_NAME} ${src_files})
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/src
 												   ${CMAKE_SOURCE_DIR}/ThirdParty/
                                                    ${CMAKE_SOURCE_DIR}/ThirdParty/yaml-cpp-0.8.0/include/
+                                                   ${CMAKE_SOURCE_DIR}/ThirdParty/cxxopts-3.2.0/include/
+                                                   ${CMAKE_SOURCE_DIR}/ThirdParty/CLI11-2.4.2/include/
 							)
 
 # qt5

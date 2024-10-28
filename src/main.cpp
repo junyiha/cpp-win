@@ -8,22 +8,44 @@
 #include "base_headers.hpp"
 #include "application.hpp"
 #include "configuration.hpp"
+#include "cxxopts.hpp"
 
 
 int main(int argc, char* argv[])
 {
 	InitLogger();
-
 	auto log = spdlog::get("logger");
-	log->info("test spdlog logger");
+	std::string mode{ "robot" };
 
-	std::clog << "Hello, world\n";
+	cxxopts::Options options("Robot", "robot");
+	options.add_options()
+		("m,mode", "mode", cxxopts::value<std::string>());
+	try
+	{
+		auto result = options.parse(argc, argv);
+		mode = result["mode"].as<std::string>();
+	}
+	catch (...)
+	{
+		log->warn("parse argument failed\n");
+	}
 
-	Config::ConfigurationMain();
+	if (mode == "robot")
+	{
+		APP::RunAPP(argc, argv);
+	}
+	else if (mode == "config")
+	{
+		Config::ConfigurationMain();
+	}
+	else if (mode == "help")
+	{
+	}
+	else
+	{
+		log->warn("invalid mode: {}", mode);
+	}
 
-	APP::RunAPP(argc, argv);
-
-	log->warn("will quit...");
 
 	return 0;
 }
