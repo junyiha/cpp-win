@@ -17,8 +17,8 @@ int main(int argc, char* argv[])
 	auto log = spdlog::get("logger");
 	std::string mode{ "robot" };
 
-	//return Config::ConfigurationMain();
-	return APP::RunAPP(argc, argv);
+	return Config::ConfigurationMain();
+	//return APP::RunAPP(argc, argv);
 
 	cxxopts::Options options("Robot", "robot");
 	options.add_options()

@@ -35,7 +35,9 @@ namespace GP
 		std::vector<double> value;
 	};
 
-	extern std::map<std::pair<WorkingScenario, PositionType>, PositionData> Position_Map;
+	using PositionMap = std::map<std::pair<GP::WorkingScenario, GP::PositionType>, GP::PositionData>;
+
+	extern PositionMap Position_Map;
 
 	static const int DOF = 11;
 
@@ -117,6 +119,8 @@ namespace Config
 		 * @brief 更新指定参数(数组).
 		 */
 		bool UpdateValue(const std::string key, const std::vector<double> value);
+
+		bool UpdateValue(const std::string key, const GP::PositionMap position_map);
 
 	private:
 		YAML::Node m_root;
