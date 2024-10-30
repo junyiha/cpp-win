@@ -2,6 +2,8 @@
 
 namespace GP
 {
+	std::map<std::pair<WorkingScenario, PositionType>, PositionData> Position_Map{};
+
 	double velLine{ 0.0 };
 	double velRotate{ 0.0 };
 
@@ -114,6 +116,17 @@ namespace Config
 		GP::Line_Deviation_Threshold = m_root["Line_Deviation_Threshold"].as<double>();
 
 		std::cerr << "brief: " << m_root["test"]["brief"].as<std::string>() << ", value: " << m_root["test"]["value"].as<int>() << "\n";
+		for (auto& it : m_root["position_map"])
+		{
+			auto work_scenario = static_cast<GP::WorkingScenario>(it[1].as<int>());
+			auto position_type = static_cast<GP::PositionType>(it[2].as<int>());
+
+			GP::PositionData position_data;
+			position_data.brief = it[0].as<std::string>();
+			position_data.value = it[3].as<std::vector<double>>();
+
+			GP::Position_Map[{work_scenario, position_type}] = position_data;
+		}
 	}
 
 	bool ConfigManager::WriteToFile()

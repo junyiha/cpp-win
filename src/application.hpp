@@ -14,6 +14,7 @@
 namespace Ui
 {
 	class NewMainWindow;
+	class SceneSelectionWindow;
 }
 
 namespace APP
@@ -55,6 +56,25 @@ namespace APP
 	private:
 		Ui::NewMainWindow *ui;
 		int m_index{ 0 };
+	};
+
+	class SceneSelectionWindow : public QWidget
+	{
+		Q_OBJECT
+	public:
+		SceneSelectionWindow(QWidget* parent = nullptr);
+		~SceneSelectionWindow();
+
+	private:
+		void ConnectSlotFunction();
+
+	private slots:
+		void ConformButtonClicked();
+		void QuitButtonClicked();
+
+	private:
+		Ui::SceneSelectionWindow* ui;
+		NewMainWindow new_window;
 	};
 
 	int RunAPP(int argc, char* argv[]);

@@ -1,5 +1,6 @@
 #include "application.hpp"
 #include "ui_NewMainWindow.h"
+#include "ui_SceneSelectionWindow.h"
 
 namespace APP
 {
@@ -31,6 +32,11 @@ namespace APP
 		QString str = QString::fromLocal8Bit("点我 %1").arg(m_index++);//arg括号里面的参数会依次替换前面的 %1
 		p_button->setText(str);
 	}
+
+	/// <summary>
+	/// //////////////////////////////////////////////////////////////////////////////////////////////////////
+	/// </summary>
+	/// <param name="parent"></param>
 
 	NewMainWindow::NewMainWindow(QWidget *parent)
 		:QWidget(parent), ui(new Ui::NewMainWindow)
@@ -89,17 +95,42 @@ namespace APP
 		ui->label->clear();
 	}
 
-	int RunAPP(int argc, char *argv[])
+	SceneSelectionWindow::SceneSelectionWindow(QWidget* parent)
+		:QWidget(parent), ui(new Ui::SceneSelectionWindow)
 	{
-		QApplication a(argc, argv);
-
-		LoadImageInQt();
-
-		NewMainWindow new_window;
-		new_window.show();
-
-		return a.exec();
+		ui->setupUi(this);
+		ConnectSlotFunction();
 	}
+
+	SceneSelectionWindow::~SceneSelectionWindow()
+	{
+		delete ui;
+	}
+
+	void SceneSelectionWindow::ConnectSlotFunction()
+	{
+		connect(ui->conform_button, &QPushButton::clicked, this, &SceneSelectionWindow::ConformButtonClicked, Qt::UniqueConnection);
+		connect(ui->quit_button, &QPushButton::clicked, this, &SceneSelectionWindow::QuitButtonClicked, Qt::UniqueConnection);
+	}
+
+	void SceneSelectionWindow::ConformButtonClicked()
+	{
+		int index = ui->comboBox->currentIndex();
+		auto text = ui->comboBox->currentText().toLocal8Bit().toStdString();
+		std::cerr << "index: " << index << ", text: " << text << "\n";
+
+		new_window.show();
+		this->close();
+	}
+
+	void SceneSelectionWindow::QuitButtonClicked()
+	{
+		this->close();
+	}
+
+	/// <summary>
+	/// /////////////////////////////////////////////////////////////////////////////
+	/// </summary>
 
 	void LoadImageInQt()
 	{
@@ -118,5 +149,17 @@ namespace APP
 		{
 			std::cerr << "pixmap is null\n";
 		}
+	}
+
+	int RunAPP(int argc, char* argv[])
+	{
+		QApplication a(argc, argv);
+
+		LoadImageInQt();
+
+		SceneSelectionWindow scene_selection_window;
+		scene_selection_window.show();
+
+		return a.exec();
 	}
 }
