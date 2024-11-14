@@ -9,6 +9,7 @@
  * \date   October 2024
  *********************************************************************/
 #include "base_headers.hpp"
+#include "QVector"
 
 
 void Loop();

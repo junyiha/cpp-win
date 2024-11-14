@@ -5,11 +5,23 @@
  * \author anony
  * \date   October 2024
  *********************************************************************/
+#include "cxxopts.hpp"
+
 #include "base_headers.hpp"
 #include "application.hpp"
 #include "configuration.hpp"
-#include "cxxopts.hpp"
+#include "counter_event.hpp"
 
+void TestEncoding()
+{
+	QString str("中文");
+	std::string std_str("中文");
+	std::cerr << "std string: " << std_str << "\n";
+
+	str = QString::fromLocal8Bit("中文");
+	str = QString::fromLocal8Bit(std_str.c_str());
+	qDebug() << "QString: " << str << "\n";
+}
 
 int main(int argc, char* argv[])
 {
@@ -17,7 +29,10 @@ int main(int argc, char* argv[])
 	auto log = spdlog::get("logger");
 	std::string mode{ "robot" };
 
-	return Config::ConfigurationMain();
+	TestEncoding();
+	Loop();
+	return 0;
+	//return Config::ConfigurationMain();
 	//return APP::RunAPP(argc, argv);
 
 	cxxopts::Options options("Robot", "robot");
