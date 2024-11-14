@@ -297,8 +297,12 @@ bool NewNewDoWeld(int execute)
 {
     auto log = spdlog::get("logger");
     static quint8  index_tool = 1; //执行焊枪编号范围1~5
+    static quint8  index_tool2 = 1; //执行焊枪编号范围1~5
     static quint8  index_act = 0;
     static int  time_cnt = 0; //周期计数，控制动作间隔
+    static int  time_cnt2 = 0; //周期计数，控制动作间隔
+    static bool offset_flag{ false };
+    static bool end_flag{ true };
 
     //=====================结束碰钉 ==========================
     if (execute == -1)
@@ -341,7 +345,33 @@ bool NewNewDoWeld(int execute)
     if (time_cnt > static_cast<int>(ActionKey::End))
     {
         time_cnt = 0;
-        index_tool++;
+        index_tool = index_tool2 + 1;
+    }
+
+    if (!offset_flag)
+    {
+        if (time_cnt > static_cast<int>(ActionKey::Grind_MovorOff2))
+        {
+            index_tool2 = index_tool + 1;
+            offset_flag = true;
+        }
+    }
+    if (offset_flag)
+    {
+        if (end_flag)
+        {
+            DoWelding(index_tool2, 11 - index_tool2, time_cnt2);
+            time_cnt2++;
+            if (time_cnt2 > static_cast<int>(ActionKey::End))
+            {
+                time_cnt2 = 0;
+                index_tool2 = index_tool + 1;
+                if (index_tool2 > 5)
+                {
+                    end_flag = false;
+                }
+            }
+        }
     }
 
     if (index_tool > 5)
