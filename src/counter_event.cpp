@@ -216,8 +216,11 @@ std::map<ActionKey, std::string> ActionMap =
     { ActionKey::InitAction, "InitAction " }
 };
 
+std::map<std::string, int> ValueMap;
+
 void DoWelding(int tool_a, int tool_b, int key)
 {
+    std::bitset<8> value;
     auto log = spdlog::get("logger");
     switch (static_cast<ActionKey>(key))
     {
@@ -225,48 +228,56 @@ void DoWelding(int tool_a, int tool_b, int key)
     {
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5号枪动作 ", __LINE__, tool_a, ActionMap[ActionKey::Grind_MovorOff1]);
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10号枪动作 ", __LINE__, tool_b, ActionMap[ActionKey::Grind_MovorOff1]);
+        value = eGrind_MovorOff;
         break;
     }
     case ActionKey::Grind_OnorDown1:
     {
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5号枪动作 ", __LINE__, tool_a, ActionMap[ActionKey::Grind_OnorDown1]);
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10号枪动作 ", __LINE__, tool_b, ActionMap[ActionKey::Grind_OnorDown1]);
+        value = eGrind_OnorDown;
         break;
     }
     case ActionKey::Grind_Up:
     {
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5号枪动作 ", __LINE__, tool_a, ActionMap[ActionKey::Grind_Up]);
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10号枪动作 ", __LINE__, tool_b, ActionMap[ActionKey::Grind_Up]);
+        value = eGrind_Up;
         break;
     }
     case ActionKey::Grind_OnorDown2:
     {
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5号枪动作 ", __LINE__, tool_a, ActionMap[ActionKey::Grind_OnorDown2]);
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10号枪动作 ", __LINE__, tool_b, ActionMap[ActionKey::Grind_OnorDown2]);
+        value = eGrind_OnorDown;
         break;
     }
     case ActionKey::Grind_MovorOff2:
     {
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5号枪动作 ", __LINE__, tool_a, ActionMap[ActionKey::Grind_MovorOff2]);
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10号枪动作 ", __LINE__, tool_b, ActionMap[ActionKey::Grind_MovorOff2]);
+        value = eGrind_MovorOff;
         break;
     }
     case ActionKey::Weld_MovorDwon:
     {
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5号枪动作 ", __LINE__, tool_a, ActionMap[ActionKey::Weld_MovorDwon]);
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10号枪动作 ", __LINE__, tool_b, ActionMap[ActionKey::Weld_MovorDwon]);
+        value = eWeld_MovorDwon;
         break;
     }
     case ActionKey::Weld_Fix:
     {
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5号枪动作 ", __LINE__, tool_a, ActionMap[ActionKey::Weld_Fix]);
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10号枪动作 ", __LINE__, tool_b, ActionMap[ActionKey::Weld_Fix]);
+        value = eWeld_Fix;
         break;
     }
     case ActionKey::Weld_Up:
     {
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5号枪动作 ", __LINE__, tool_a, ActionMap[ActionKey::Weld_Up]);
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10号枪动作 ", __LINE__, tool_b, ActionMap[ActionKey::Weld_Up]);
+        value = eWeld_Up;
         break;
     }
     case ActionKey::Weld_On:
@@ -275,6 +286,7 @@ void DoWelding(int tool_a, int tool_b, int key)
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10号枪动作 ", __LINE__, tool_b, ActionMap[ActionKey::Weld_On]);
         log->info("{}: m_Comm->SetGunConnect({}); ", __LINE__, tool_a);
         log->info("{}: m_Comm->SetGunConnect({}); ", __LINE__, tool_b);
+        value = eWeld_On;
         break;
     }
     case ActionKey::Weld_Down:
@@ -282,14 +294,35 @@ void DoWelding(int tool_a, int tool_b, int key)
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5号枪动作 ", __LINE__, tool_a, ActionMap[ActionKey::Weld_Down]);
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10号枪动作 ", __LINE__, tool_b, ActionMap[ActionKey::Weld_Down]);
         log->info("{}: m_Comm->SetGunConnect(0); ", __LINE__);
+        value = eWeld_Down;
         break;
     }
     case ActionKey::InitAction:
     {
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5号枪动作 ", __LINE__, tool_a, ActionMap[ActionKey::InitAction]);
         log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10号枪动作 ", __LINE__, tool_b, ActionMap[ActionKey::InitAction]);
+        value = eInitAction;
         break;
     }
+    }
+    if (value.count() != 0)
+    {
+        auto now = std::chrono::system_clock::now();
+        auto timestamp = std::chrono::system_clock::to_time_t(now);
+        std::tm* now_tm = std::localtime(&timestamp);
+        std::stringstream os;
+        os << std::put_time(now_tm, "%Y-%m-%d %H:%M:%S");
+        
+        auto it = ValueMap.find(os.str());
+        if (it != ValueMap.end())
+        {
+            it->second += value.count();
+        }
+        else
+        {
+            ValueMap[os.str()] = value.count();
+        }
+        log->warn("{}: value.count(): {}, timestamp: {}", __LINE__, value.count(), os.str());
     }
 }
 
@@ -309,13 +342,20 @@ bool NewNewDoWeld(int execute)
     {
         unsigned char tem = ActionList[index_act] & 0b00100011;//关闭打磨、碰钉、定位气缸、打磨降
         tem |= 0b00100000; //碰钉枪下降
-        log->info("{}: m_Comm->SetToolsAction(index_tool, (E_WeldAction)tem); ", __LINE__);
-        log->info("{}: m_Comm->SetToolsAction(11 - index_tool, (E_WeldAction)tem); ", __LINE__);
+        log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, index_tool);
+        log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, 11 - index_tool);
+        if (offset_flag)
+        {
+            log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, index_tool2);
+            log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, 11 - index_tool2);
+        }
         log->info("{}: m_Comm->SetGunConnect(0);//关闭接触器 ", __LINE__);
 
         index_tool = 1;
+        index_tool2 = 1;
         index_act = 0;
         time_cnt = 0;
+        time_cnt2 = 0;
         log->info("结束碰钉作业");
         return true;
     }
@@ -328,8 +368,13 @@ bool NewNewDoWeld(int execute)
         if (pause_cnt > 600)//暂停时间过长，停止
         {
             unsigned char tem = ActionList[index_act] & 0b10111111;//关闭打磨
-            log->info("{}: m_Comm->SetToolsAction(index_tool, (E_WeldAction)tem); ", __LINE__);
-            log->info("{}: m_Comm->SetToolsAction(11 - index_tool, (E_WeldAction)tem); ", __LINE__);
+            log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, index_tool);
+            log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, 11 - index_tool);
+            if (offset_flag)
+            {
+                log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, index_tool2);
+                log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, 11 - index_tool2);
+            }
             log->info("{}: m_Comm->SetGunConnect(0);//关闭接触器 ", __LINE__);
 
             pause_cnt = 0;
@@ -350,7 +395,8 @@ bool NewNewDoWeld(int execute)
 
     if (!offset_flag)
     {
-        if (time_cnt > static_cast<int>(ActionKey::Grind_MovorOff2))
+        //if (time_cnt > static_cast<int>(ActionKey::Grind_MovorOff2))
+        if (time_cnt > 200)
         {
             index_tool2 = index_tool + 1;
             offset_flag = true;
@@ -386,13 +432,30 @@ void Loop()
 {
     auto log = spdlog::get("logger");
     auto begin = std::chrono::steady_clock::now();
+    int execute{ 1 };
+    int cnt{ 1 };
 	while (true)
 	{
+        cnt++;
+        if (cnt > 600)
+        {
+            execute = -1;
+        }
 		std::this_thread::sleep_for(std::chrono::milliseconds(50));
-        if (NewNewDoWeld(1))
+        if (NewNewDoWeld(execute))
         {
             auto duration = std::chrono::steady_clock::now() - begin;
             log->warn("whole duration: {} (s)\n exit from loop...", std::chrono::duration_cast<std::chrono::seconds> (duration).count());
+            std::vector<std::pair<std::string, int>> container;
+            for (const auto& it : ValueMap)
+            {
+                container.push_back(std::make_pair(it.first, it.second));
+            }
+            std::stable_sort(container.begin(), container.end(), [](std::pair<std::string, int> a, std::pair<std::string, int> b) { return a.second > b.second; });
+            for (const auto& it : container)
+            {
+                log->info("timestamp: {}, value count: {}", it.first, it.second);
+            }
             break;
         }
 	}

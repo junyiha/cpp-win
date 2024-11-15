@@ -11,6 +11,10 @@
 
 #include <iostream>
 #include <chrono>
+#include <bitset>
+#include <iomanip>
+#include <sstream>
+#include <algorithm>
 
 // spdlog
 #include "spdlog/spdlog.h"
