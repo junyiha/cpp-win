@@ -52,6 +52,9 @@ namespace APP
 	private slots:
 		void ButtonDown();
 		void CloseButton();
+		void ConfigButtonClicked();
+		void ArgumentButtonClicked();
+		void DocumentButtonClicked();
 
 	private:
 		Ui::NewMainWindow *ui;

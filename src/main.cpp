@@ -29,11 +29,11 @@ int main(int argc, char* argv[])
 	auto log = spdlog::get("logger");
 	std::string mode{ "robot" };
 
-	TestEncoding();
-	Loop();
-	return 0;
+	//TestEncoding();
+	//Loop();
+	//return 0;
 	//return Config::ConfigurationMain();
-	//return APP::RunAPP(argc, argv);
+	return APP::RunAPP(argc, argv);
 
 	cxxopts::Options options("Robot", "robot");
 	options.add_options()

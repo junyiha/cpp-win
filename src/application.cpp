@@ -55,6 +55,24 @@ namespace APP
 	{
 		connect(ui->pushButton, &QPushButton::clicked, this, &NewMainWindow::ButtonDown, Qt::UniqueConnection);
 		connect(ui->closeButton, &QPushButton::clicked, this, &NewMainWindow::CloseButton, Qt::UniqueConnection);
+		connect(ui->btn_config, &QPushButton::clicked, this, &NewMainWindow::ConfigButtonClicked, Qt::UniqueConnection);
+		connect(ui->btn_argument, &QPushButton::clicked, this, &NewMainWindow::ArgumentButtonClicked, Qt::UniqueConnection);
+		connect(ui->btn_document, &QPushButton::clicked, this, &NewMainWindow::DocumentButtonClicked, Qt::UniqueConnection);
+	}
+
+	void NewMainWindow::ConfigButtonClicked()
+	{
+		ui->stackedWidget->setCurrentIndex(0);
+	}
+
+	void NewMainWindow::ArgumentButtonClicked()
+	{
+		ui->stackedWidget->setCurrentIndex(1);
+	}
+
+	void NewMainWindow::DocumentButtonClicked()
+	{
+		ui->stackedWidget->setCurrentIndex(2);
 	}
 
 	void NewMainWindow::PutImage()
@@ -127,6 +145,7 @@ namespace APP
 	{
 		this->close();
 	}
+
 
 	/// <summary>
 	/// /////////////////////////////////////////////////////////////////////////////
