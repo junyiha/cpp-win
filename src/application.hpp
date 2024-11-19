@@ -56,6 +56,8 @@ namespace APP
 		void ArgumentButtonClicked();
 		void DocumentButtonClicked();
 
+		void MessageAlertButtonClicked();
+
 	private:
 		Ui::NewMainWindow *ui;
 		int m_index{ 0 };

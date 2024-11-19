@@ -213,6 +213,19 @@ border: 2px solid green;
     <string>参数</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="btn_message_alert">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>200</y>
+     <width>101</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>message alert</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

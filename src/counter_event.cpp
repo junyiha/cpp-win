@@ -436,12 +436,12 @@ void Loop()
     int cnt{ 1 };
 	while (true)
 	{
-        cnt++;
-        if (cnt > 600)
-        {
-            execute = -1;
-        }
-		std::this_thread::sleep_for(std::chrono::milliseconds(50));
+  //      cnt++;
+  //      if (cnt > 600)
+  //      {
+  //          execute = -1;
+  //      }
+		//std::this_thread::sleep_for(std::chrono::milliseconds(50));
         if (NewNewDoWeld(execute))
         {
             auto duration = std::chrono::steady_clock::now() - begin;

@@ -58,6 +58,7 @@ namespace APP
 		connect(ui->btn_config, &QPushButton::clicked, this, &NewMainWindow::ConfigButtonClicked, Qt::UniqueConnection);
 		connect(ui->btn_argument, &QPushButton::clicked, this, &NewMainWindow::ArgumentButtonClicked, Qt::UniqueConnection);
 		connect(ui->btn_document, &QPushButton::clicked, this, &NewMainWindow::DocumentButtonClicked, Qt::UniqueConnection);
+		connect(ui->btn_message_alert, &QPushButton::clicked, this, &NewMainWindow::MessageAlertButtonClicked, Qt::UniqueConnection);
 	}
 
 	void NewMainWindow::ConfigButtonClicked()
@@ -73,6 +74,22 @@ namespace APP
 	void NewMainWindow::DocumentButtonClicked()
 	{
 		ui->stackedWidget->setCurrentIndex(2);
+	}
+
+	void NewMainWindow::MessageAlertButtonClicked()
+	{
+		QLabel* label_ptr = new QLabel("this is a message alert...", this);
+		label_ptr->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
+		label_ptr->setStyleSheet("background-color: green; color: white; padding: 10px; border-radius: 5px;");
+		label_ptr->setAlignment(Qt::AlignHCenter);
+		label_ptr->setFixedSize(200, 50);
+
+		QPoint global_pos = mapToGlobal(QPoint(0, 0));
+		label_ptr->move(global_pos.x() + width() / 2 - label_ptr->width() / 2, global_pos.y() + 50);
+		label_ptr->show();
+
+		// 设置定时器 3 秒后关闭窗口
+		QTimer::singleShot(3000, label_ptr, &QLabel::deleteLater);
 	}
 
 	void NewMainWindow::PutImage()
