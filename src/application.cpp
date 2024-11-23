@@ -42,7 +42,7 @@ namespace APP
 		:QWidget(parent), ui(new Ui::NewMainWindow)
 	{
 		ui->setupUi(this);
-
+		m_log = spdlog::get("logger");
 		ConnectSlotFunction();
 	}
 
@@ -59,6 +59,7 @@ namespace APP
 		connect(ui->btn_argument, &QPushButton::clicked, this, &NewMainWindow::ArgumentButtonClicked, Qt::UniqueConnection);
 		connect(ui->btn_document, &QPushButton::clicked, this, &NewMainWindow::DocumentButtonClicked, Qt::UniqueConnection);
 		connect(ui->btn_message_alert, &QPushButton::clicked, this, &NewMainWindow::MessageAlertButtonClicked, Qt::UniqueConnection);
+		connect(ui->btn_send_data_x, &QPushButton::clicked, this, &NewMainWindow::SendDataButtonClicked, Qt::UniqueConnection);
 	}
 
 	void NewMainWindow::ConfigButtonClicked()
@@ -74,6 +75,7 @@ namespace APP
 	void NewMainWindow::DocumentButtonClicked()
 	{
 		ui->stackedWidget->setCurrentIndex(2);
+		LoadHelpFile();
 	}
 
 	void NewMainWindow::MessageAlertButtonClicked()
@@ -90,6 +92,13 @@ namespace APP
 
 		// 设置定时器 3 秒后关闭窗口
 		QTimer::singleShot(3000, label_ptr, &QLabel::deleteLater);
+	}
+
+	void NewMainWindow::SendDataButtonClicked()
+	{
+		double value = ui->doubleSpinBoxForX->value();
+
+		m_log->info("{} value: {}", __LINE__, value);
 	}
 
 	void NewMainWindow::PutImage()
@@ -117,6 +126,20 @@ namespace APP
 		{
 			std::cerr << "path is invalid!!!\n";
 		}
+	}
+
+	void NewMainWindow::LoadHelpFile()
+	{
+		std::string help_file{ "C://Users//anony//Documents//GitHub//junyiha.github.io//_posts//notes//Company//shanghai-tejizhi-robot//碰钉机器人//PDRobotHelp.html" };
+		auto current_widget_ptr = ui->stackedWidget->currentWidget();
+
+		QTextBrowser* text_browser = new QTextBrowser;
+		text_browser->setSource(QUrl::fromLocalFile(QString::fromLocal8Bit(help_file.c_str())));
+
+		QVBoxLayout* layout = new QVBoxLayout;
+		layout->addWidget(text_browser);
+		current_widget_ptr->setLayout(layout);
+		current_widget_ptr->show();
 	}
 
 	void NewMainWindow::ButtonDown()

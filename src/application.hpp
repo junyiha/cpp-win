@@ -48,6 +48,7 @@ namespace APP
 	private:
 		void ConnectSlotFunction();
 		void PutImage();
+		void LoadHelpFile();
 
 	private slots:
 		void ButtonDown();
@@ -55,12 +56,13 @@ namespace APP
 		void ConfigButtonClicked();
 		void ArgumentButtonClicked();
 		void DocumentButtonClicked();
-
 		void MessageAlertButtonClicked();
+		void SendDataButtonClicked();
 
 	private:
 		Ui::NewMainWindow *ui;
 		int m_index{ 0 };
+		std::shared_ptr<spdlog::logger> m_log;
 	};
 
 	class SceneSelectionWindow : public QWidget
