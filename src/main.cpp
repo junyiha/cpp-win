@@ -30,8 +30,8 @@ int main(int argc, char* argv[])
 	std::string mode{ "robot" };
 
 	//TestEncoding();
-	//Loop();
-	//return 0;
+	Loop();
+	return 0;
 	//return Config::ConfigurationMain();
 	return APP::RunAPP(argc, argv);
 
