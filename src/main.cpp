@@ -23,17 +23,53 @@ void TestEncoding()
 	qDebug() << "QString: " << str << "\n";
 }
 
+void TestException()
+{
+	std::vector<int> arr(3, 0);
+
+	try
+	{
+		std::cerr << arr.at(3) << "\n";
+	}
+	catch (std::out_of_range& e)
+	{
+		std::cerr << e.what() << "\n";
+	}
+}
+
+enum E_LinkState
+{
+	eLINK_ERRORSTOP = 0,
+	eLINK_DISABLED,
+	eLINK_STANDSTILL,
+	eLINK_STOPPING,
+	eLINK_HOMING,
+	eLINK_MOVING
+};
+
+void TestCRobot()
+{
+	E_LinkState state{eLINK_ERRORSTOP};
+	int temp = 7;
+
+	memcpy(&state, &temp, sizeof(temp));
+
+	std::cerr << state << "\n";
+}
+
 int main(int argc, char* argv[])
 {
 	InitLogger();
 	auto log = spdlog::get("logger");
 	std::string mode{ "robot" };
 
+	TestCRobot();
+	//TestException();
 	//TestEncoding();
-	Loop();
+	//Loop();
 	return 0;
 	//return Config::ConfigurationMain();
-	return APP::RunAPP(argc, argv);
+	//return APP::RunAPP(argc, argv);
 
 	cxxopts::Options options("Robot", "robot");
 	options.add_options()
