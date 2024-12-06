@@ -2,136 +2,134 @@
 
 enum E_WeldAction : unsigned int
 {
-    eInitAction = 0,    //³õÊ¼×ËÌ¬
-    eGrind_MovorOff = 0b00000001,     //ÒÆ¶¯µ½´òÄ¥Î» or ´òÄ¥¹Ø±Õ
-    eGrind_OnorDown = 0b01000001,     //´òÄ¥¿ªÆô or ´òÄ¥ÏÂ½µ
-    eGrind_Up = 0b01001001,      //´òÄ¥¾ÙÉı
-    eWeld_MovorDwon = 0b00000010,      //ÒÆ¶¯µ½º¸½ÓÎ»
-    eWeld_Fix = 0b00000110,      //¶¨Î»Æø¸×¿ª
-    eWeld_Up = 0b00010110,      //º¸½Ó¾ÙÉı
-    eWeld_On = 0b10010110,      //º¸½ÓÆğ»¡
-    eWeld_Down = 0b00100010,       //º¸½ÓÆğ»¡¹Ø+º¸½ÓÏÂ½µ+¶¨Î»Æø¸×¹Ø
-    eNone_Action = 255   //³õÊ¼×´Ì¬
+    eInitAction = 0,              // åˆå§‹å§¿æ€
+    eGrind_MovorOff = 0b00000001, // ç§»åŠ¨åˆ°æ‰“ç£¨ä½ or æ‰“ç£¨å…³é—­
+    eGrind_OnorDown = 0b01000001, // æ‰“ç£¨å¼€å¯ or æ‰“ç£¨ä¸‹é™
+    eGrind_Up = 0b01001001,       // æ‰“ç£¨ä¸¾å‡
+    eWeld_MovorDwon = 0b00000010, // ç§»åŠ¨åˆ°ç„Šæ¥ä½
+    eWeld_Fix = 0b00000110,       // å®šä½æ°”ç¼¸å¼€
+    eWeld_Up = 0b00010110,        // ç„Šæ¥ä¸¾å‡
+    eWeld_On = 0b10010110,        // ç„Šæ¥èµ·å¼§
+    eWeld_Down = 0b00100010,      // ç„Šæ¥èµ·å¼§å…³+ç„Šæ¥ä¸‹é™+å®šä½æ°”ç¼¸å…³
+    eNone_Action = 255            // åˆå§‹çŠ¶æ€
 };
 
-const QVector<E_WeldAction> ActionList = { eGrind_MovorOff, eGrind_OnorDown, eGrind_Up, eGrind_OnorDown, eGrind_MovorOff, eWeld_MovorDwon, eWeld_Fix, eWeld_Up, eWeld_On, eWeld_Down, eInitAction };
-const QVector<int>          ActionTime = { 40,              20,       100,              20,              20,              40,        40,       40,       40,         40,          5 };
-const QVector<std::string>  ActionName = { "GrindMovorOff","Grind_OnorDown","Grind_Up","Weld_MovorDwon","Grind_MovorOff","Weld_MovorDwon","Weld_Fix","Weld_Up","Weld_On","Weld_Down","InitAction" };
-
+const QVector<E_WeldAction> ActionList = {eGrind_MovorOff, eGrind_OnorDown, eGrind_Up, eGrind_OnorDown, eGrind_MovorOff, eWeld_MovorDwon, eWeld_Fix, eWeld_Up, eWeld_On, eWeld_Down, eInitAction};
+const QVector<int> ActionTime = {40, 20, 100, 20, 20, 40, 40, 40, 40, 40, 5};
+const QVector<std::string> ActionName = {"GrindMovorOff", "Grind_OnorDown", "Grind_Up", "Weld_MovorDwon", "Grind_MovorOff", "Weld_MovorDwon", "Weld_Fix", "Weld_Up", "Weld_On", "Weld_Down", "InitAction"};
 
 bool DoWeld(int execute)
 {
     auto log = spdlog::get("logger");
-    static quint8  index_tool = 1; //Ö´ĞĞº¸Ç¹±àºÅ·¶Î§1~5
-    static quint8  index_act = 0;
-    static quint8  time_cnt = 0; //ÖÜÆÚ¼ÆÊı£¬¿ØÖÆ¶¯×÷¼ä¸ô
+    static quint8 index_tool = 1; // æ‰§è¡Œç„Šæªç¼–å·èŒƒå›´1~5
+    static quint8 index_act = 0;
+    static quint8 time_cnt = 0; // å‘¨æœŸè®¡æ•°ï¼Œæ§åˆ¶åŠ¨ä½œé—´éš”
 
-    //=====================½áÊøÅö¶¤ ==========================
+    //=====================ç»“æŸç¢°é’‰ ==========================
     if (execute == -1)
     {
-        unsigned char tem = ActionList[index_act] & 0b00100011;//¹Ø±Õ´òÄ¥¡¢Åö¶¤¡¢¶¨Î»Æø¸×¡¢´òÄ¥½µ
-        tem |= 0b00100000; //Åö¶¤Ç¹ÏÂ½µ
+        unsigned char tem = ActionList[index_act] & 0b00100011; // å…³é—­æ‰“ç£¨ã€ç¢°é’‰ã€å®šä½æ°”ç¼¸ã€æ‰“ç£¨é™
+        tem |= 0b00100000;                                      // ç¢°é’‰æªä¸‹é™
         log->info("{}: m_Comm->SetToolsAction(index_tool, (E_WeldAction)tem); ", __LINE__);
         log->info("{}: m_Comm->SetToolsAction(11 - index_tool, (E_WeldAction)tem); ", __LINE__);
-        log->info("{}: m_Comm->SetGunConnect(0);//¹Ø±Õ½Ó´¥Æ÷ ", __LINE__);
+        log->info("{}: m_Comm->SetGunConnect(0);//å…³é—­æ¥è§¦å™¨ ", __LINE__);
 
         index_tool = 1;
         index_act = 0;
         time_cnt = 0;
-        log->info("½áÊøÅö¶¤×÷Òµ");
+        log->info("ç»“æŸç¢°é’‰ä½œä¸š");
         return true;
     }
 
-    //=====================ÔİÍ£Åö¶¤ ==========================
+    //=====================æš‚åœç¢°é’‰ ==========================
     static quint32 pause_cnt = 0;
     if (execute == 0)
     {
         pause_cnt++;
-        if (pause_cnt > 600)//ÔİÍ£Ê±¼ä¹ı³¤£¬Í£Ö¹
+        if (pause_cnt > 600) // æš‚åœæ—¶é—´è¿‡é•¿ï¼Œåœæ­¢
         {
-            unsigned char tem = ActionList[index_act] & 0b10111111;//¹Ø±Õ´òÄ¥
+            unsigned char tem = ActionList[index_act] & 0b10111111; // å…³é—­æ‰“ç£¨
             log->info("{}: m_Comm->SetToolsAction(index_tool, (E_WeldAction)tem); ", __LINE__);
             log->info("{}: m_Comm->SetToolsAction(11 - index_tool, (E_WeldAction)tem); ", __LINE__);
-            log->info("{}: m_Comm->SetGunConnect(0);//¹Ø±Õ½Ó´¥Æ÷ ", __LINE__);
+            log->info("{}: m_Comm->SetGunConnect(0);//å…³é—­æ¥è§¦å™¨ ", __LINE__);
 
             pause_cnt = 0;
-            log->warn("ÔİÍ£Ê±¼ä¹ı³¤£¬¹Ø±Õ´òÄ¥¼°½Ó´¥Æ÷");
+            log->warn("æš‚åœæ—¶é—´è¿‡é•¿ï¼Œå…³é—­æ‰“ç£¨åŠæ¥è§¦å™¨");
         }
-        log->info("×Ô¶¯Åö¶¤ÔİÍ£");
+        log->info("è‡ªåŠ¨ç¢°é’‰æš‚åœ");
         return true;
     }
 
-    //=============== Ö´ĞĞ10°Ñº¸Ç¹ÂÖ´Îº¸½Ó1~5,6~10 ==============
+    //=============== æ‰§è¡Œ10æŠŠç„Šæªè½®æ¬¡ç„Šæ¥1~5,6~10 ==============
     if (index_act < ActionList.size())
     {
         if (time_cnt == 0)
         {
-            //Ö´ĞĞ¶¯×÷
-            log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, index_tool, index_act);
-            log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10ºÅÇ¹¶¯×÷ ", __LINE__, 11 - index_tool, index_act);
-            log->info("º¸Ç¹{}Ö´ĞĞ¶¯×÷:{} {}", index_tool, index_act, ActionName[index_act]);
+            // æ‰§è¡ŒåŠ¨ä½œ
+            log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, index_tool, index_act);
+            log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10å·æªåŠ¨ä½œ ", __LINE__, 11 - index_tool, index_act);
+            log->info("ç„Šæª{}æ‰§è¡ŒåŠ¨ä½œ:{} {}", index_tool, index_act, ActionName[index_act]);
 
-            //ÔÚÌØ¶¨¶¯×÷Á¬½Óº¸Ç¹
+            // åœ¨ç‰¹å®šåŠ¨ä½œè¿æ¥ç„Šæª
             if (ActionList[index_act] == eWeld_Up)
             {
                 log->info("{}: m_Comm->SetGunConnect({}); ", __LINE__, index_tool);
                 log->info("{}: m_Comm->SetGunConnect({}); ", __LINE__, 11 - index_tool);
-                log->debug("½Ó´¥Æ÷ÎüºÏ");
+                log->debug("æ¥è§¦å™¨å¸åˆ");
             }
             if (ActionList[index_act] == eWeld_Down)
             {
                 log->info("{}: m_Comm->SetGunConnect(0); ", __LINE__);
-                log->debug("½Ó´¥Æ÷¶Ï¿ª");
+                log->debug("æ¥è§¦å™¨æ–­å¼€");
             }
             time_cnt++;
         }
         else
         {
-            //¼ÆÊıµÈ´ı
+            // è®¡æ•°ç­‰å¾…
             time_cnt++;
 
-            if (time_cnt > ActionTime[index_act])//µÈ´ı½áÊø£¬½øÈëÏÂÒ»¸ö¶¯×÷
+            if (time_cnt > ActionTime[index_act]) // ç­‰å¾…ç»“æŸï¼Œè¿›å…¥ä¸‹ä¸€ä¸ªåŠ¨ä½œ
             {
                 index_act++;
                 time_cnt = 0;
             }
         }
 
-        return  false;
+        return false;
     }
     else
     {
-        //Íê³ÉËùÓĞ¶¯×÷£¬ÇĞ»»µ½ÏÂÒ»°Ñº¸Ç¹
-        log->info("Íê³Éº¸Ç¹£º{}", index_tool);
+        // å®Œæˆæ‰€æœ‰åŠ¨ä½œï¼Œåˆ‡æ¢åˆ°ä¸‹ä¸€æŠŠç„Šæª
+        log->info("å®Œæˆç„Šæªï¼š{}", index_tool);
 
-        log->info("{}: m_Comm->SetToolsAction(index_tool, eInitAction); //1~5ºÅÇ¹¶¯×÷ ", __LINE__);
-        log->info("{}: m_Comm->SetToolsAction(11 - index_tool, eInitAction);//6~10ºÅÇ¹¶¯×÷", __LINE__);
+        log->info("{}: m_Comm->SetToolsAction(index_tool, eInitAction); //1~5å·æªåŠ¨ä½œ ", __LINE__);
+        log->info("{}: m_Comm->SetToolsAction(11 - index_tool, eInitAction);//6~10å·æªåŠ¨ä½œ", __LINE__);
 
         index_act = 0;
         index_tool++;
 
-        if (index_tool > 5) //ËùÓĞº¸Ç¹¶¯×÷Íê³É
+        if (index_tool > 5) // æ‰€æœ‰ç„ŠæªåŠ¨ä½œå®Œæˆ
         {
             index_tool = 1;
-            log->info("ËùÓĞº¸Ç¹¶¯×÷Íê³É");
+            log->info("æ‰€æœ‰ç„ŠæªåŠ¨ä½œå®Œæˆ");
             return true;
         }
 
         return false;
-    } 
-    return  true;
+    }
+    return true;
 }
-
 
 bool NewDoWeld(int execute)
 {
-    bool exit_flag{ false };
+    bool exit_flag{false};
     auto log = spdlog::get("logger");
-    static quint8  index_tool = 1; //Ö´ĞĞº¸Ç¹±àºÅ·¶Î§1~5
-    static quint8  index_act = 0;
-    static quint8  time_cnt = 0; //ÖÜÆÚ¼ÆÊı£¬¿ØÖÆ¶¯×÷¼ä¸ô
-    bool tools_exit{ false };
-    //=============== Ö´ĞĞ10°Ñº¸Ç¹ÂÖ´Îº¸½Ó1~5,6~10 ==============
+    static quint8 index_tool = 1; // æ‰§è¡Œç„Šæªç¼–å·èŒƒå›´1~5
+    static quint8 index_act = 0;
+    static quint8 time_cnt = 0; // å‘¨æœŸè®¡æ•°ï¼Œæ§åˆ¶åŠ¨ä½œé—´éš”
+    bool tools_exit{false};
+    //=============== æ‰§è¡Œ10æŠŠç„Šæªè½®æ¬¡ç„Šæ¥1~5,6~10 ==============
     if (index_act < ActionList.size())
     {
         if (time_cnt == 0)
@@ -140,13 +138,13 @@ bool NewDoWeld(int execute)
             {
                 log->info("{}: m_Comm->SetGunConnect({}); ", __LINE__, index_tool);
                 log->info("{}: m_Comm->SetGunConnect({}); ", __LINE__, 11 - index_tool);
-                log->debug("½Ó´¥Æ÷ÎüºÏ: {}, {}", index_tool, 11 - index_tool);
+                log->debug("æ¥è§¦å™¨å¸åˆ: {}, {}", index_tool, 11 - index_tool);
             }
             else
             {
-                log->info("ËùÓĞº¸Ç¹Ö´ĞĞ¶¯×÷:{} {}", index_act, ActionName[index_act]);
+                log->info("æ‰€æœ‰ç„Šæªæ‰§è¡ŒåŠ¨ä½œ:{} {}", index_act, ActionName[index_act]);
                 for (int i = 0; i < 10; i++)
-                    log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, i, index_act);
+                    log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, i, index_act);
             }
 
             time_cnt++;
@@ -154,7 +152,7 @@ bool NewDoWeld(int execute)
         else
         {
             time_cnt++;
-            if (time_cnt > ActionTime[index_act])//µÈ´ı½áÊø£¬½øÈëÏÂÒ»¸ö¶¯×÷
+            if (time_cnt > ActionTime[index_act]) // ç­‰å¾…ç»“æŸï¼Œè¿›å…¥ä¸‹ä¸€ä¸ªåŠ¨ä½œ
             {
                 if (index_act == 8)
                 {
@@ -184,7 +182,6 @@ bool NewDoWeld(int execute)
     return exit_flag;
 }
 
-
 enum class ActionKey
 {
     Grind_MovorOff1 = 0,
@@ -202,19 +199,18 @@ enum class ActionKey
 };
 
 std::map<ActionKey, std::string> ActionMap =
-{
-    { ActionKey::Grind_MovorOff1, "Grind_MovorOff1 " },
-    { ActionKey::Grind_OnorDown1, "Grind_OnorDown1 " },
-    { ActionKey::Grind_Up, "Grind_Up " },
-    { ActionKey::Grind_OnorDown2, "Grind_OnorDown2 " },
-    { ActionKey::Grind_MovorOff2, "Grind_MovorOff2 " },
-    { ActionKey::Weld_MovorDwon, "Weld_MovorDwon " },
-    { ActionKey::Weld_Fix, "Weld_Fix " },
-    { ActionKey::Weld_Up, "Weld_Up " },
-    { ActionKey::Weld_On, "Weld_On " },
-    { ActionKey::Weld_Down, "Weld_Down " },
-    { ActionKey::InitAction, "InitAction " }
-};
+    {
+        {ActionKey::Grind_MovorOff1, "Grind_MovorOff1 "},
+        {ActionKey::Grind_OnorDown1, "Grind_OnorDown1 "},
+        {ActionKey::Grind_Up, "Grind_Up "},
+        {ActionKey::Grind_OnorDown2, "Grind_OnorDown2 "},
+        {ActionKey::Grind_MovorOff2, "Grind_MovorOff2 "},
+        {ActionKey::Weld_MovorDwon, "Weld_MovorDwon "},
+        {ActionKey::Weld_Fix, "Weld_Fix "},
+        {ActionKey::Weld_Up, "Weld_Up "},
+        {ActionKey::Weld_On, "Weld_On "},
+        {ActionKey::Weld_Down, "Weld_Down "},
+        {ActionKey::InitAction, "InitAction "}};
 
 std::map<std::string, int> ValueMap;
 
@@ -226,64 +222,64 @@ void DoWelding(int tool_a, int tool_b, int key)
     {
     case ActionKey::Grind_MovorOff1:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, tool_a, ActionMap[ActionKey::Grind_MovorOff1]);
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10ºÅÇ¹¶¯×÷ ", __LINE__, tool_b, ActionMap[ActionKey::Grind_MovorOff1]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, tool_a, ActionMap[ActionKey::Grind_MovorOff1]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10å·æªåŠ¨ä½œ ", __LINE__, tool_b, ActionMap[ActionKey::Grind_MovorOff1]);
         value = eGrind_MovorOff;
         break;
     }
     case ActionKey::Grind_OnorDown1:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, tool_a, ActionMap[ActionKey::Grind_OnorDown1]);
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10ºÅÇ¹¶¯×÷ ", __LINE__, tool_b, ActionMap[ActionKey::Grind_OnorDown1]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, tool_a, ActionMap[ActionKey::Grind_OnorDown1]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10å·æªåŠ¨ä½œ ", __LINE__, tool_b, ActionMap[ActionKey::Grind_OnorDown1]);
         value = eGrind_OnorDown;
         break;
     }
     case ActionKey::Grind_Up:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, tool_a, ActionMap[ActionKey::Grind_Up]);
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10ºÅÇ¹¶¯×÷ ", __LINE__, tool_b, ActionMap[ActionKey::Grind_Up]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, tool_a, ActionMap[ActionKey::Grind_Up]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10å·æªåŠ¨ä½œ ", __LINE__, tool_b, ActionMap[ActionKey::Grind_Up]);
         value = eGrind_Up;
         break;
     }
     case ActionKey::Grind_OnorDown2:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, tool_a, ActionMap[ActionKey::Grind_OnorDown2]);
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10ºÅÇ¹¶¯×÷ ", __LINE__, tool_b, ActionMap[ActionKey::Grind_OnorDown2]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, tool_a, ActionMap[ActionKey::Grind_OnorDown2]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10å·æªåŠ¨ä½œ ", __LINE__, tool_b, ActionMap[ActionKey::Grind_OnorDown2]);
         value = eGrind_OnorDown;
         break;
     }
     case ActionKey::Grind_MovorOff2:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, tool_a, ActionMap[ActionKey::Grind_MovorOff2]);
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10ºÅÇ¹¶¯×÷ ", __LINE__, tool_b, ActionMap[ActionKey::Grind_MovorOff2]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, tool_a, ActionMap[ActionKey::Grind_MovorOff2]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10å·æªåŠ¨ä½œ ", __LINE__, tool_b, ActionMap[ActionKey::Grind_MovorOff2]);
         value = eGrind_MovorOff;
         break;
     }
     case ActionKey::Weld_MovorDwon:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, tool_a, ActionMap[ActionKey::Weld_MovorDwon]);
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10ºÅÇ¹¶¯×÷ ", __LINE__, tool_b, ActionMap[ActionKey::Weld_MovorDwon]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, tool_a, ActionMap[ActionKey::Weld_MovorDwon]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10å·æªåŠ¨ä½œ ", __LINE__, tool_b, ActionMap[ActionKey::Weld_MovorDwon]);
         value = eWeld_MovorDwon;
         break;
     }
     case ActionKey::Weld_Fix:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, tool_a, ActionMap[ActionKey::Weld_Fix]);
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10ºÅÇ¹¶¯×÷ ", __LINE__, tool_b, ActionMap[ActionKey::Weld_Fix]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, tool_a, ActionMap[ActionKey::Weld_Fix]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10å·æªåŠ¨ä½œ ", __LINE__, tool_b, ActionMap[ActionKey::Weld_Fix]);
         value = eWeld_Fix;
         break;
     }
     case ActionKey::Weld_Up:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, tool_a, ActionMap[ActionKey::Weld_Up]);
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10ºÅÇ¹¶¯×÷ ", __LINE__, tool_b, ActionMap[ActionKey::Weld_Up]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, tool_a, ActionMap[ActionKey::Weld_Up]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10å·æªåŠ¨ä½œ ", __LINE__, tool_b, ActionMap[ActionKey::Weld_Up]);
         value = eWeld_Up;
         break;
     }
     case ActionKey::Weld_On:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, tool_a, ActionMap[ActionKey::Weld_On]);
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10ºÅÇ¹¶¯×÷ ", __LINE__, tool_b, ActionMap[ActionKey::Weld_On]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, tool_a, ActionMap[ActionKey::Weld_On]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10å·æªåŠ¨ä½œ ", __LINE__, tool_b, ActionMap[ActionKey::Weld_On]);
         log->info("{}: m_Comm->SetGunConnect({}); ", __LINE__, tool_a);
         log->info("{}: m_Comm->SetGunConnect({}); ", __LINE__, tool_b);
         value = eWeld_On;
@@ -291,16 +287,16 @@ void DoWelding(int tool_a, int tool_b, int key)
     }
     case ActionKey::Weld_Down:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, tool_a, ActionMap[ActionKey::Weld_Down]);
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10ºÅÇ¹¶¯×÷ ", __LINE__, tool_b, ActionMap[ActionKey::Weld_Down]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, tool_a, ActionMap[ActionKey::Weld_Down]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10å·æªåŠ¨ä½œ ", __LINE__, tool_b, ActionMap[ActionKey::Weld_Down]);
         log->info("{}: m_Comm->SetGunConnect(0); ", __LINE__);
         value = eWeld_Down;
         break;
     }
     case ActionKey::InitAction:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, tool_a, ActionMap[ActionKey::InitAction]);
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10ºÅÇ¹¶¯×÷ ", __LINE__, tool_b, ActionMap[ActionKey::InitAction]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, tool_a, ActionMap[ActionKey::InitAction]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]);//6~10å·æªåŠ¨ä½œ ", __LINE__, tool_b, ActionMap[ActionKey::InitAction]);
         value = eInitAction;
         break;
     }
@@ -309,10 +305,10 @@ void DoWelding(int tool_a, int tool_b, int key)
     {
         auto now = std::chrono::system_clock::now();
         auto timestamp = std::chrono::system_clock::to_time_t(now);
-        std::tm* now_tm = std::localtime(&timestamp);
+        std::tm *now_tm = std::localtime(&timestamp);
         std::stringstream os;
         os << std::put_time(now_tm, "%Y-%m-%d %H:%M:%S");
-        
+
         auto it = ValueMap.find(os.str());
         if (it != ValueMap.end())
         {
@@ -334,69 +330,69 @@ void SingleToolDoWeldingExecuteUnit(int index, int key)
     {
     case ActionKey::Grind_MovorOff1:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, index, ActionMap[ActionKey::Grind_MovorOff1]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, index, ActionMap[ActionKey::Grind_MovorOff1]);
         value = eGrind_MovorOff;
         break;
     }
     case ActionKey::Grind_OnorDown1:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, index, ActionMap[ActionKey::Grind_OnorDown1]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, index, ActionMap[ActionKey::Grind_OnorDown1]);
         value = eGrind_OnorDown;
         break;
     }
     case ActionKey::Grind_Up:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, index, ActionMap[ActionKey::Grind_Up]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, index, ActionMap[ActionKey::Grind_Up]);
         value = eGrind_Up;
         break;
     }
     case ActionKey::Grind_OnorDown2:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, index, ActionMap[ActionKey::Grind_OnorDown2]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, index, ActionMap[ActionKey::Grind_OnorDown2]);
         value = eGrind_OnorDown;
         break;
     }
     case ActionKey::Grind_MovorOff2:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, index, ActionMap[ActionKey::Grind_MovorOff2]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, index, ActionMap[ActionKey::Grind_MovorOff2]);
         value = eGrind_MovorOff;
         break;
     }
     case ActionKey::Weld_MovorDwon:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, index, ActionMap[ActionKey::Weld_MovorDwon]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, index, ActionMap[ActionKey::Weld_MovorDwon]);
         value = eWeld_MovorDwon;
         break;
     }
     case ActionKey::Weld_Fix:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, index, ActionMap[ActionKey::Weld_Fix]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, index, ActionMap[ActionKey::Weld_Fix]);
         value = eWeld_Fix;
         break;
     }
     case ActionKey::Weld_Up:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, index, ActionMap[ActionKey::Weld_Up]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, index, ActionMap[ActionKey::Weld_Up]);
         value = eWeld_Up;
         break;
     }
     case ActionKey::Weld_On:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, index, ActionMap[ActionKey::Weld_On]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, index, ActionMap[ActionKey::Weld_On]);
         log->info("{}: m_Comm->SetGunConnect({}); ", __LINE__, index);
         value = eWeld_On;
         break;
     }
     case ActionKey::Weld_Down:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, index, ActionMap[ActionKey::Weld_Down]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, index, ActionMap[ActionKey::Weld_Down]);
         log->info("{}: m_Comm->SetGunConnect(0); ", __LINE__);
         value = eWeld_Down;
         break;
     }
     case ActionKey::InitAction:
     {
-        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5ºÅÇ¹¶¯×÷ ", __LINE__, index, ActionMap[ActionKey::InitAction]);
+        log->info("{}: m_Comm->SetToolsAction({}, ActionList[{}]); //1~5å·æªåŠ¨ä½œ ", __LINE__, index, ActionMap[ActionKey::InitAction]);
         value = eInitAction;
         break;
     }
@@ -405,7 +401,7 @@ void SingleToolDoWeldingExecuteUnit(int index, int key)
     {
         auto now = std::chrono::system_clock::now();
         auto timestamp = std::chrono::system_clock::to_time_t(now);
-        std::tm* now_tm = std::localtime(&timestamp);
+        std::tm *now_tm = std::localtime(&timestamp);
         std::stringstream os;
         os << std::put_time(now_tm, "%Y-%m-%d %H:%M:%S");
 
@@ -425,19 +421,19 @@ void SingleToolDoWeldingExecuteUnit(int index, int key)
 bool NewNewDoWeld(int execute)
 {
     auto log = spdlog::get("logger");
-    static quint8  index_tool = 1; //Ö´ĞĞº¸Ç¹±àºÅ·¶Î§1~5
-    static quint8  index_tool2 = 1; //Ö´ĞĞº¸Ç¹±àºÅ·¶Î§1~5
-    static quint8  index_act = 0;
-    static int  time_cnt = 0; //ÖÜÆÚ¼ÆÊı£¬¿ØÖÆ¶¯×÷¼ä¸ô
-    static int  time_cnt2 = 0; //ÖÜÆÚ¼ÆÊı£¬¿ØÖÆ¶¯×÷¼ä¸ô
-    static bool offset_flag{ false };
-    static bool end_flag{ true };
+    static quint8 index_tool = 1;  // æ‰§è¡Œç„Šæªç¼–å·èŒƒå›´1~5
+    static quint8 index_tool2 = 1; // æ‰§è¡Œç„Šæªç¼–å·èŒƒå›´1~5
+    static quint8 index_act = 0;
+    static int time_cnt = 0;  // å‘¨æœŸè®¡æ•°ï¼Œæ§åˆ¶åŠ¨ä½œé—´éš”
+    static int time_cnt2 = 0; // å‘¨æœŸè®¡æ•°ï¼Œæ§åˆ¶åŠ¨ä½œé—´éš”
+    static bool offset_flag{false};
+    static bool end_flag{true};
 
-    //=====================½áÊøÅö¶¤ ==========================
+    //=====================ç»“æŸç¢°é’‰ ==========================
     if (execute == -1)
     {
-        unsigned char tem = ActionList[index_act] & 0b00100011;//¹Ø±Õ´òÄ¥¡¢Åö¶¤¡¢¶¨Î»Æø¸×¡¢´òÄ¥½µ
-        tem |= 0b00100000; //Åö¶¤Ç¹ÏÂ½µ
+        unsigned char tem = ActionList[index_act] & 0b00100011; // å…³é—­æ‰“ç£¨ã€ç¢°é’‰ã€å®šä½æ°”ç¼¸ã€æ‰“ç£¨é™
+        tem |= 0b00100000;                                      // ç¢°é’‰æªä¸‹é™
         log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, index_tool);
         log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, 11 - index_tool);
         if (offset_flag)
@@ -445,25 +441,25 @@ bool NewNewDoWeld(int execute)
             log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, index_tool2);
             log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, 11 - index_tool2);
         }
-        log->info("{}: m_Comm->SetGunConnect(0);//¹Ø±Õ½Ó´¥Æ÷ ", __LINE__);
+        log->info("{}: m_Comm->SetGunConnect(0);//å…³é—­æ¥è§¦å™¨ ", __LINE__);
 
         index_tool = 1;
         index_tool2 = 1;
         index_act = 0;
         time_cnt = 0;
         time_cnt2 = 0;
-        log->info("½áÊøÅö¶¤×÷Òµ");
+        log->info("ç»“æŸç¢°é’‰ä½œä¸š");
         return true;
     }
 
-    //=====================ÔİÍ£Åö¶¤ ==========================
+    //=====================æš‚åœç¢°é’‰ ==========================
     static quint32 pause_cnt = 0;
     if (execute == 0)
     {
         pause_cnt++;
-        if (pause_cnt > 600)//ÔİÍ£Ê±¼ä¹ı³¤£¬Í£Ö¹
+        if (pause_cnt > 600) // æš‚åœæ—¶é—´è¿‡é•¿ï¼Œåœæ­¢
         {
-            unsigned char tem = ActionList[index_act] & 0b10111111;//¹Ø±Õ´òÄ¥
+            unsigned char tem = ActionList[index_act] & 0b10111111; // å…³é—­æ‰“ç£¨
             log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, index_tool);
             log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, 11 - index_tool);
             if (offset_flag)
@@ -471,16 +467,16 @@ bool NewNewDoWeld(int execute)
                 log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, index_tool2);
                 log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, 11 - index_tool2);
             }
-            log->info("{}: m_Comm->SetGunConnect(0);//¹Ø±Õ½Ó´¥Æ÷ ", __LINE__);
+            log->info("{}: m_Comm->SetGunConnect(0);//å…³é—­æ¥è§¦å™¨ ", __LINE__);
 
             pause_cnt = 0;
-            log->warn("ÔİÍ£Ê±¼ä¹ı³¤£¬¹Ø±Õ´òÄ¥¼°½Ó´¥Æ÷");
+            log->warn("æš‚åœæ—¶é—´è¿‡é•¿ï¼Œå…³é—­æ‰“ç£¨åŠæ¥è§¦å™¨");
         }
-        log->info("×Ô¶¯Åö¶¤ÔİÍ£");
+        log->info("è‡ªåŠ¨ç¢°é’‰æš‚åœ");
         return true;
     }
 
-    //=============== Ö´ĞĞ10°Ñº¸Ç¹ÂÖ´Îº¸½Ó1~5,6~10 ==============
+    //=============== æ‰§è¡Œ10æŠŠç„Šæªè½®æ¬¡ç„Šæ¥1~5,6~10 ==============
     DoWelding(index_tool, 11 - index_tool, time_cnt);
     time_cnt++;
     if (time_cnt > static_cast<int>(ActionKey::End))
@@ -491,7 +487,7 @@ bool NewNewDoWeld(int execute)
 
     if (!offset_flag)
     {
-        //if (time_cnt > static_cast<int>(ActionKey::Grind_MovorOff2))
+        // if (time_cnt > static_cast<int>(ActionKey::Grind_MovorOff2))
         if (time_cnt > 200)
         {
             index_tool2 = index_tool + 1;
@@ -518,7 +514,7 @@ bool NewNewDoWeld(int execute)
 
     if (index_tool > 5)
     {
-        return  true;
+        return true;
     }
 
     return false;
@@ -527,58 +523,58 @@ bool NewNewDoWeld(int execute)
 bool DoubleToolsDoWeldAction(int execute)
 {
     auto log = spdlog::get("logger");
-    static quint8  index_tool = 1; //Ö´ĞĞº¸Ç¹±àºÅ·¶Î§1~5
-    static quint8  index_tool2 = 10; //Ö´ĞĞº¸Ç¹±àºÅ·¶Î§1~5
-    static quint8  index_act = 0;
-    static int  time_cnt = 0; //ÖÜÆÚ¼ÆÊı£¬¿ØÖÆ¶¯×÷¼ä¸ô
-    static int  time_cnt2 = 0; //ÖÜÆÚ¼ÆÊı£¬¿ØÖÆ¶¯×÷¼ä¸ô
-    static bool offset_flag{ false };
-    static bool end_flag{ true };
+    static quint8 index_tool = 1;   // æ‰§è¡Œç„Šæªç¼–å·èŒƒå›´1~5
+    static quint8 index_tool2 = 10; // æ‰§è¡Œç„Šæªç¼–å·èŒƒå›´1~5
+    static quint8 index_act = 0;
+    static int time_cnt = 0;  // å‘¨æœŸè®¡æ•°ï¼Œæ§åˆ¶åŠ¨ä½œé—´éš”
+    static int time_cnt2 = 0; // å‘¨æœŸè®¡æ•°ï¼Œæ§åˆ¶åŠ¨ä½œé—´éš”
+    static bool offset_flag{false};
+    static bool end_flag{true};
 
-    //=====================½áÊøÅö¶¤ ==========================
+    //=====================ç»“æŸç¢°é’‰ ==========================
     if (execute == -1)
     {
-        unsigned char tem = ActionList[index_act] & 0b00100011;//¹Ø±Õ´òÄ¥¡¢Åö¶¤¡¢¶¨Î»Æø¸×¡¢´òÄ¥½µ
-        tem |= 0b00100000; //Åö¶¤Ç¹ÏÂ½µ
+        unsigned char tem = ActionList[index_act] & 0b00100011; // å…³é—­æ‰“ç£¨ã€ç¢°é’‰ã€å®šä½æ°”ç¼¸ã€æ‰“ç£¨é™
+        tem |= 0b00100000;                                      // ç¢°é’‰æªä¸‹é™
         log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, index_tool);
         if (offset_flag)
         {
             log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, index_tool2);
         }
-        log->info("{}: m_Comm->SetGunConnect(0);//¹Ø±Õ½Ó´¥Æ÷ ", __LINE__);
+        log->info("{}: m_Comm->SetGunConnect(0);//å…³é—­æ¥è§¦å™¨ ", __LINE__);
 
         index_tool = 1;
         index_tool2 = 10;
         index_act = 0;
         time_cnt = 0;
         time_cnt2 = 0;
-        log->info("½áÊøÅö¶¤×÷Òµ");
+        log->info("ç»“æŸç¢°é’‰ä½œä¸š");
         return true;
     }
 
-    //=====================ÔİÍ£Åö¶¤ ==========================
+    //=====================æš‚åœç¢°é’‰ ==========================
     static quint32 pause_cnt = 0;
     if (execute == 0)
     {
         pause_cnt++;
-        if (pause_cnt > 600)//ÔİÍ£Ê±¼ä¹ı³¤£¬Í£Ö¹
+        if (pause_cnt > 600) // æš‚åœæ—¶é—´è¿‡é•¿ï¼Œåœæ­¢
         {
-            unsigned char tem = ActionList[index_act] & 0b10111111;//¹Ø±Õ´òÄ¥
+            unsigned char tem = ActionList[index_act] & 0b10111111; // å…³é—­æ‰“ç£¨
             log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, index_tool);
             if (offset_flag)
             {
                 log->info("{}: m_Comm->SetToolsAction({}, (E_WeldAction)tem); ", __LINE__, index_tool2);
             }
-            log->info("{}: m_Comm->SetGunConnect(0);//¹Ø±Õ½Ó´¥Æ÷ ", __LINE__);
+            log->info("{}: m_Comm->SetGunConnect(0);//å…³é—­æ¥è§¦å™¨ ", __LINE__);
 
             pause_cnt = 0;
-            log->warn("ÔİÍ£Ê±¼ä¹ı³¤£¬¹Ø±Õ´òÄ¥¼°½Ó´¥Æ÷");
+            log->warn("æš‚åœæ—¶é—´è¿‡é•¿ï¼Œå…³é—­æ‰“ç£¨åŠæ¥è§¦å™¨");
         }
-        log->info("×Ô¶¯Åö¶¤ÔİÍ£");
+        log->info("è‡ªåŠ¨ç¢°é’‰æš‚åœ");
         return true;
     }
 
-    //=============== Ö´ĞĞ10°Ñº¸Ç¹ÂÖ´Îº¸½Ó1~5,6~10 ==============
+    //=============== æ‰§è¡Œ10æŠŠç„Šæªè½®æ¬¡ç„Šæ¥1~5,6~10 ==============
     if (index_tool > 5)
     {
         goto __JUMP_First;
@@ -624,42 +620,42 @@ __JUMP_First:
         index_act = 0;
         time_cnt = 0;
         time_cnt2 = 0;
-        return  true;
+        return true;
     }
 
     return false;
 }
 
-
 void Loop()
 {
     auto log = spdlog::get("logger");
     auto begin = std::chrono::steady_clock::now();
-    int execute{ 1 };
-    int cnt{ 1 };
-	while (true)
-	{
-  //      cnt++;
-  //      if (cnt > 600)
-  //      {
-  //          execute = -1;
-  //      }
-		std::this_thread::sleep_for(std::chrono::milliseconds(50));
+    int execute{1};
+    int cnt{1};
+    while (true)
+    {
+        //      cnt++;
+        //      if (cnt > 600)
+        //      {
+        //          execute = -1;
+        //      }
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
         if (DoubleToolsDoWeldAction(execute))
         {
             auto duration = std::chrono::steady_clock::now() - begin;
-            log->warn("whole duration: {} (s)\n exit from loop...", std::chrono::duration_cast<std::chrono::seconds> (duration).count());
+            log->warn("whole duration: {} (s)\n exit from loop...", std::chrono::duration_cast<std::chrono::seconds>(duration).count());
             std::vector<std::pair<std::string, int>> container;
-            for (const auto& it : ValueMap)
+            for (const auto &it : ValueMap)
             {
                 container.push_back(std::make_pair(it.first, it.second));
             }
-            std::stable_sort(container.begin(), container.end(), [](std::pair<std::string, int> a, std::pair<std::string, int> b) { return a.second > b.second; });
-            for (const auto& it : container)
+            std::stable_sort(container.begin(), container.end(), [](std::pair<std::string, int> a, std::pair<std::string, int> b)
+                             { return a.second > b.second; });
+            for (const auto &it : container)
             {
                 log->info("timestamp: {}, value count: {}", it.first, it.second);
             }
             break;
         }
-	}
+    }
 }

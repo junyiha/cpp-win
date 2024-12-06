@@ -18,18 +18,18 @@ namespace APP
 
 	void MainWindow::createUi()
 	{
-		QVBoxLayout* layout = new QVBoxLayout();    //Ìí¼ÓÒ»¸öÊúÏò×Ô¶¯²¼¾Ö
+		QVBoxLayout* layout = new QVBoxLayout();    //æ·»åŠ ä¸€ä¸ªç«–å‘è‡ªåŠ¨å¸ƒå±€
 		p_button = new QPushButton(this);
-		p_button->setText(QString::fromLocal8Bit("µãÎÒ"));    //QString::fromLocal8Bit("ÖĞÎÄ"),·ñÔò»áÂÒÂë
-		connect(p_button, SIGNAL(released()), this, SLOT(slotButtonDown())); //ĞÅºÅÓë²Û
+		p_button->setText(QString::fromLocal8Bit("ç‚¹æˆ‘"));    //QString::fromLocal8Bit("ä¸­æ–‡"),å¦åˆ™ä¼šä¹±ç 
+		connect(p_button, SIGNAL(released()), this, SLOT(slotButtonDown())); //ä¿¡å·ä¸æ§½
 
-		layout->addWidget(p_button);    //Ìí¼ÓÒ»¸ö°´Å¥½øÈë²¼¾Ö¹ÜÀíÆ÷
-		this->setLayout(layout);    //½«²¼¾Ö¹ÜÀíÆ÷ÉèÖÃµ½µ±Ç°¿Ø¼ş
+		layout->addWidget(p_button);    //æ·»åŠ ä¸€ä¸ªæŒ‰é’®è¿›å…¥å¸ƒå±€ç®¡ç†å™¨
+		this->setLayout(layout);    //å°†å¸ƒå±€ç®¡ç†å™¨è®¾ç½®åˆ°å½“å‰æ§ä»¶
 	}
 
 	void MainWindow::slotButtonDown()
 	{
-		QString str = QString::fromLocal8Bit("µãÎÒ %1").arg(m_index++);//argÀ¨ºÅÀïÃæµÄ²ÎÊı»áÒÀ´ÎÌæ»»Ç°ÃæµÄ %1
+		QString str = QString::fromLocal8Bit("ç‚¹æˆ‘ %1").arg(m_index++);//argæ‹¬å·é‡Œé¢çš„å‚æ•°ä¼šä¾æ¬¡æ›¿æ¢å‰é¢çš„ %1
 		p_button->setText(str);
 	}
 
@@ -90,7 +90,7 @@ namespace APP
 		label_ptr->move(global_pos.x() + width() / 2 - label_ptr->width() / 2, global_pos.y() + 50);
 		label_ptr->show();
 
-		// ÉèÖÃ¶¨Ê±Æ÷ 3 Ãëºó¹Ø±Õ´°¿Ú
+		// è®¾ç½®å®šæ—¶å™¨ 3 ç§’åå…³é—­çª—å£
 		QTimer::singleShot(3000, label_ptr, &QLabel::deleteLater);
 	}
 
@@ -103,7 +103,7 @@ namespace APP
 
 	void NewMainWindow::PutImage()
 	{
-		QString image_path = QString::fromLocal8Bit("C:/Users/anony/Desktop/ÎŞ±êÌâ.png");
+		QString image_path = QString::fromLocal8Bit("C:/Users/anony/Desktop/æ— æ ‡é¢˜.png");
 
 		if (QFile::exists(image_path))
 		{
@@ -113,7 +113,7 @@ namespace APP
 				std::cerr << "image is null, terminate!!!\n";
 			}
 
-			QPixmap pixmap(QString::fromLocal8Bit("C:/Users/anony/Desktop/ÎŞ±êÌâ.png"));
+			QPixmap pixmap(QString::fromLocal8Bit("C:/Users/anony/Desktop/æ— æ ‡é¢˜.png"));
 			if (pixmap.isNull())
 			{
 				std::cerr << "pixmap is null, terminate!!!\n";
@@ -130,7 +130,7 @@ namespace APP
 
 	void NewMainWindow::LoadHelpFile()
 	{
-		std::string help_file{ "C://Users//anony//Documents//GitHub//junyiha.github.io//_posts//notes//Company//shanghai-tejizhi-robot//Åö¶¤»úÆ÷ÈË//PDRobotHelp.html" };
+		std::string help_file{ "C://Users//anony//Documents//GitHub//junyiha.github.io//_posts//notes//Company//shanghai-tejizhi-robot//ç¢°é’‰æœºå™¨äºº//PDRobotHelp.html" };
 		auto current_widget_ptr = ui->stackedWidget->currentWidget();
 
 		QTextBrowser* text_browser = new QTextBrowser;
@@ -193,17 +193,17 @@ namespace APP
 
 	void LoadImageInQt()
 	{
-		QString path{ "C:/Users/anony/Desktop/ÎŞ±êÌâ.png" };
+		QString path{ "C:/Users/anony/Desktop/æ— æ ‡é¢˜.png" };
 
 		std::cerr << "Current Directory: " << QDir::currentPath().toStdString();
 
-		if (QFile::exists(QString::fromLocal8Bit("C:/Users/anony/Desktop/ÎŞ±êÌâ.png")) == false)
+		if (QFile::exists(QString::fromLocal8Bit("C:/Users/anony/Desktop/æ— æ ‡é¢˜.png")) == false)
 		{
 			std::cerr << "file not exist!!!\n";
 		}
 
 		QPixmap pixmap;
-		pixmap.load(QString::fromLocal8Bit("C:/Users/anony/Desktop/ÎŞ±êÌâ.png"));
+		pixmap.load(QString::fromLocal8Bit("C:/Users/anony/Desktop/æ— æ ‡é¢˜.png"));
 		if (pixmap.isNull())
 		{
 			std::cerr << "pixmap is null\n";

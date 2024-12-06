@@ -4,27 +4,27 @@ namespace GP
 {
 	std::map<std::pair<WorkingScenario, PositionType>, PositionData> Position_Map{};
 
-	double velLine{ 0.0 };
-	double velRotate{ 0.0 };
+	double velLine{0.0};
+	double velRotate{0.0};
 
-	std::size_t CYLINDER_INDEX{ 0 };
-	std::size_t STEER_LEFT_INDEX{ 0 };
-	std::size_t STEER_RIGHT_INDEX{ 0 };
-	std::size_t WHEEL_LEFT_INDEX{ 0 };
-	std::size_t WHEEL_RIGHT_INDEX{ 0 };
-	std::size_t TOOL_LIFTING{ 0 };
+	std::size_t CYLINDER_INDEX{0};
+	std::size_t STEER_LEFT_INDEX{0};
+	std::size_t STEER_RIGHT_INDEX{0};
+	std::size_t WHEEL_LEFT_INDEX{0};
+	std::size_t WHEEL_RIGHT_INDEX{0};
+	std::size_t TOOL_LIFTING{0};
 
-	double Lift_Distance_In_Parallel{ 0.0 };
-	double Max_Deviation_In_Parallel{ 0.0 };
-	double Min_Deviation_In_Parallel{ 0.0 };
+	double Lift_Distance_In_Parallel{0.0};
+	double Max_Deviation_In_Parallel{0.0};
+	double Min_Deviation_In_Parallel{0.0};
 
-	double Distance_work{ 0.0 };
+	double Distance_work{0.0};
 
-	double Lift_Distance_In_FitBoard{ 0.0 };
-	double Max_Deviation_In_FitBoard{ 0.0 };
-	double Min_Deviation_In_FitBoard{ 0.0 };
+	double Lift_Distance_In_FitBoard{0.0};
+	double Max_Deviation_In_FitBoard{0.0};
+	double Min_Deviation_In_FitBoard{0.0};
 
-	double Line_Deviation_Threshold{ 0.0 };
+	double Line_Deviation_Threshold{0.0};
 
 	std::vector<double> Home_Position(DOF, 0.0);
 	QVector<double> Home_Position_QV = QVector<double>(DOF, 0.0);
@@ -51,12 +51,11 @@ namespace Config
 
 	ConfigManager::~ConfigManager()
 	{
-
 	}
 
 	bool ConfigManager::LoadConfiguration()
 	{
-		bool res{ true };
+		bool res{true};
 		try
 		{
 			m_root = YAML::LoadFile(m_path);
@@ -116,7 +115,7 @@ namespace Config
 		GP::Line_Deviation_Threshold = m_root["Line_Deviation_Threshold"].as<double>();
 
 		std::cerr << "brief: " << m_root["test"]["brief"].as<std::string>() << ", value: " << m_root["test"]["value"].as<int>() << "\n";
-		for (auto& it : m_root["position_map"])
+		for (auto &it : m_root["position_map"])
 		{
 			auto work_scenario = static_cast<GP::WorkingScenario>(it[1].as<int>());
 			auto position_type = static_cast<GP::PositionType>(it[2].as<int>());
@@ -131,7 +130,7 @@ namespace Config
 
 	bool ConfigManager::WriteToFile()
 	{
-		bool res{ false };
+		bool res{false};
 
 		std::ofstream fout(m_path);
 		if (fout)
@@ -151,7 +150,7 @@ namespace Config
 
 	bool ConfigManager::UpdateValue(const std::string key, const double value)
 	{
-		bool res{ false };
+		bool res{false};
 
 		if (m_root[key])
 		{
@@ -159,13 +158,13 @@ namespace Config
 			if (WriteToFile())
 				res = true;
 		}
-		
+
 		return res;
 	}
 
 	bool ConfigManager::UpdateValue(const std::string key, const std::vector<double> value)
 	{
-		bool res{ false };
+		bool res{false};
 
 		if (m_root[key])
 		{
@@ -179,9 +178,9 @@ namespace Config
 
 	bool ConfigManager::UpdateValue(const std::string key, const GP::PositionMap position_map)
 	{
-		bool res{ false };
+		bool res{false};
 		YAML::Node node;
-		for (auto& it : position_map)
+		for (auto &it : position_map)
 		{
 			YAML::Node temp_node;
 			temp_node.push_back(it.second.brief);
@@ -199,18 +198,18 @@ namespace Config
 
 	int ConfigurationMain()
 	{
-		std::string path{ "C:/Users/anony/Documents/GitHub/cpp-win/data/config.yaml" };
+		std::string path{"C:/Users/anony/Documents/GitHub/cpp-win/data/config.yaml"};
 		ConfigManager config_manager(path);
 
 		std::cerr << "Line Deviation Threshold: " << GP::Line_Deviation_Threshold << "\n"
 				  << "Home Position: " << GP::Home_Position[0] << "\n";
 
 		config_manager.UpdateValue("Line_Deviation_Threshold", 6.0);
-		config_manager.UpdateValue("home_point", { 2, 2, 3, 4, 5, 6 , 7, 8, 9, 10, 11});
+		config_manager.UpdateValue("home_point", {2, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11});
 
 		std::cerr << "Line Deviation Threshold: " << GP::Line_Deviation_Threshold << "\n";
 
-		GP::Position_Map[{GP::WorkingScenario::Top, GP::PositionType::Lift}].value = { 2, 2, 3, 4, 5, 6 , 7, 8, 9, 10, 11 };
+		GP::Position_Map[{GP::WorkingScenario::Top, GP::PositionType::Lift}].value = {2, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 		config_manager.UpdateValue("position_map", GP::Position_Map);
 
 		return 0;

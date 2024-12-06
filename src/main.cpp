@@ -1,7 +1,7 @@
-/*****************************************************************//**
+/****************************************************************
  * \file   main.cpp
- * \brief  
- * 
+ * \brief
+ *
  * \author anony
  * \date   October 2024
  *********************************************************************/
@@ -14,11 +14,11 @@
 
 void TestEncoding()
 {
-	QString str("中文");
-	std::string std_str("中文");
+	QString str("涓枃");
+	std::string std_str("涓枃");
 	std::cerr << "std string: " << std_str << "\n";
 
-	str = QString::fromLocal8Bit("中文");
+	str = QString::fromLocal8Bit("涓枃");
 	str = QString::fromLocal8Bit(std_str.c_str());
 	qDebug() << "QString: " << str << "\n";
 }
@@ -31,7 +31,7 @@ void TestException()
 	{
 		std::cerr << arr.at(3) << "\n";
 	}
-	catch (std::out_of_range& e)
+	catch (std::out_of_range &e)
 	{
 		std::cerr << e.what() << "\n";
 	}
@@ -57,23 +57,22 @@ void TestCRobot()
 	std::cerr << state << "\n";
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
 	InitLogger();
 	auto log = spdlog::get("logger");
-	std::string mode{ "robot" };
+	std::string mode{"robot"};
 
 	TestCRobot();
-	//TestException();
-	//TestEncoding();
-	//Loop();
+	// TestException();
+	// TestEncoding();
+	// Loop();
 	return 0;
-	//return Config::ConfigurationMain();
-	//return APP::RunAPP(argc, argv);
+	// return Config::ConfigurationMain();
+	// return APP::RunAPP(argc, argv);
 
 	cxxopts::Options options("Robot", "robot");
-	options.add_options()
-		("m,mode", "mode", cxxopts::value<std::string>());
+	options.add_options()("m,mode", "mode", cxxopts::value<std::string>());
 	try
 	{
 		auto result = options.parse(argc, argv);
@@ -99,7 +98,6 @@ int main(int argc, char* argv[])
 	{
 		log->warn("invalid mode: {}", mode);
 	}
-
 
 	return 0;
 }
