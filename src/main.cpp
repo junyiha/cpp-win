@@ -15,6 +15,8 @@
 #include "boost/filesystem.hpp"
 #include "boost/asio.hpp"
 
+#include "asio.hpp"
+
 void TestEncoding()
 {
 	QString str("中文");
@@ -89,11 +91,44 @@ void AsioServer()
 
 	tcp::socket socket(io_context);
 	acceptor.accept(socket);
-
-	std::string message{ "Hello from server" };
-	boost::asio::write(socket, boost::asio::buffer(message));
+	std::vector<char> recv_buf(10 * 1024);
+	while (true)
+	{
+		std::size_t recv_size = socket.read_some(boost::asio::buffer(recv_buf.data(), recv_buf.size()));
+		std::cerr << "receive data: " << std::string(recv_buf.data(), recv_size) << "\n";
+		std::string message{ "Hello from server" };
+		boost::asio::write(socket, boost::asio::buffer(message));
+	}
 
 	return;
+}
+
+void AsioClient()
+{
+	asio::io_context io_context;
+	auto address = asio::ip::make_address("127.0.0.1");
+	asio::ip::tcp::endpoint endpoint(address, 1234);
+	asio::ip::tcp::socket socket(io_context);
+	asio::error_code ec;
+	socket.connect(endpoint, ec);
+	if (!ec)
+	{
+		std::cerr << "Connect successful\n";
+		std::vector<char> buf(10 * 1024);
+		while (true)
+		{
+			std::string msg;
+			std::cerr << "input send message: \n";
+			std::cin >> msg;
+			socket.write_some(asio::buffer(msg.data(), msg.size()));
+			std::size_t recv_size = socket.read_some(asio::buffer(buf.data(), buf.size()));
+			std::cerr << "receive data: " << std::string(buf.data(), recv_size) << "\n";
+		}
+	}
+	else
+	{
+		std::cerr << "connect failed, error message: " << ec.message() << "\n";
+	}
 }
 
 int main(int argc, char* argv[])
@@ -132,6 +167,10 @@ int main(int argc, char* argv[])
 	else if (mode == "tcp_server")
 	{
 		AsioServer();
+	}
+	else if (mode == "tcp_client")
+	{
+		AsioClient();
 	}
 	else
 	{
