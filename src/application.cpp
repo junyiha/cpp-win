@@ -38,7 +38,7 @@ namespace APP
 	/// </summary>
 	/// <param name="parent"></param>
 
-	NewMainWindow::NewMainWindow(QWidget *parent)
+	NewMainWindow::NewMainWindow(QWidget* parent)
 		:QWidget(parent), ui(new Ui::NewMainWindow)
 	{
 		ui->setupUi(this);

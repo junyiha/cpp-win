@@ -1,4 +1,4 @@
-#include "counter_event.hpp"
+﻿#include "counter_event.hpp"
 
 enum E_WeldAction : unsigned int
 {
@@ -14,9 +14,9 @@ enum E_WeldAction : unsigned int
     eNone_Action = 255            // 初始状态
 };
 
-const QVector<E_WeldAction> ActionList = {eGrind_MovorOff, eGrind_OnorDown, eGrind_Up, eGrind_OnorDown, eGrind_MovorOff, eWeld_MovorDwon, eWeld_Fix, eWeld_Up, eWeld_On, eWeld_Down, eInitAction};
-const QVector<int> ActionTime = {40, 20, 100, 20, 20, 40, 40, 40, 40, 40, 5};
-const QVector<std::string> ActionName = {"GrindMovorOff", "Grind_OnorDown", "Grind_Up", "Weld_MovorDwon", "Grind_MovorOff", "Weld_MovorDwon", "Weld_Fix", "Weld_Up", "Weld_On", "Weld_Down", "InitAction"};
+const QVector<E_WeldAction> ActionList = { eGrind_MovorOff, eGrind_OnorDown, eGrind_Up, eGrind_OnorDown, eGrind_MovorOff, eWeld_MovorDwon, eWeld_Fix, eWeld_Up, eWeld_On, eWeld_Down, eInitAction };
+const QVector<int> ActionTime = { 40, 20, 100, 20, 20, 40, 40, 40, 40, 40, 5 };
+const QVector<std::string> ActionName = { "GrindMovorOff", "Grind_OnorDown", "Grind_Up", "Weld_MovorDwon", "Grind_MovorOff", "Weld_MovorDwon", "Weld_Fix", "Weld_Up", "Weld_On", "Weld_Down", "InitAction" };
 
 bool DoWeld(int execute)
 {
@@ -123,12 +123,12 @@ bool DoWeld(int execute)
 
 bool NewDoWeld(int execute)
 {
-    bool exit_flag{false};
+    bool exit_flag{ false };
     auto log = spdlog::get("logger");
     static quint8 index_tool = 1; // 执行焊枪编号范围1~5
     static quint8 index_act = 0;
     static quint8 time_cnt = 0; // 周期计数，控制动作间隔
-    bool tools_exit{false};
+    bool tools_exit{ false };
     //=============== 执行10把焊枪轮次焊接1~5,6~10 ==============
     if (index_act < ActionList.size())
     {
@@ -199,18 +199,18 @@ enum class ActionKey
 };
 
 std::map<ActionKey, std::string> ActionMap =
-    {
-        {ActionKey::Grind_MovorOff1, "Grind_MovorOff1 "},
-        {ActionKey::Grind_OnorDown1, "Grind_OnorDown1 "},
-        {ActionKey::Grind_Up, "Grind_Up "},
-        {ActionKey::Grind_OnorDown2, "Grind_OnorDown2 "},
-        {ActionKey::Grind_MovorOff2, "Grind_MovorOff2 "},
-        {ActionKey::Weld_MovorDwon, "Weld_MovorDwon "},
-        {ActionKey::Weld_Fix, "Weld_Fix "},
-        {ActionKey::Weld_Up, "Weld_Up "},
-        {ActionKey::Weld_On, "Weld_On "},
-        {ActionKey::Weld_Down, "Weld_Down "},
-        {ActionKey::InitAction, "InitAction "}};
+{
+    {ActionKey::Grind_MovorOff1, "Grind_MovorOff1 "},
+    {ActionKey::Grind_OnorDown1, "Grind_OnorDown1 "},
+    {ActionKey::Grind_Up, "Grind_Up "},
+    {ActionKey::Grind_OnorDown2, "Grind_OnorDown2 "},
+    {ActionKey::Grind_MovorOff2, "Grind_MovorOff2 "},
+    {ActionKey::Weld_MovorDwon, "Weld_MovorDwon "},
+    {ActionKey::Weld_Fix, "Weld_Fix "},
+    {ActionKey::Weld_Up, "Weld_Up "},
+    {ActionKey::Weld_On, "Weld_On "},
+    {ActionKey::Weld_Down, "Weld_Down "},
+    {ActionKey::InitAction, "InitAction "} };
 
 std::map<std::string, int> ValueMap;
 
@@ -305,7 +305,7 @@ void DoWelding(int tool_a, int tool_b, int key)
     {
         auto now = std::chrono::system_clock::now();
         auto timestamp = std::chrono::system_clock::to_time_t(now);
-        std::tm *now_tm = std::localtime(&timestamp);
+        std::tm* now_tm = std::localtime(&timestamp);
         std::stringstream os;
         os << std::put_time(now_tm, "%Y-%m-%d %H:%M:%S");
 
@@ -401,7 +401,7 @@ void SingleToolDoWeldingExecuteUnit(int index, int key)
     {
         auto now = std::chrono::system_clock::now();
         auto timestamp = std::chrono::system_clock::to_time_t(now);
-        std::tm *now_tm = std::localtime(&timestamp);
+        std::tm* now_tm = std::localtime(&timestamp);
         std::stringstream os;
         os << std::put_time(now_tm, "%Y-%m-%d %H:%M:%S");
 
@@ -426,8 +426,8 @@ bool NewNewDoWeld(int execute)
     static quint8 index_act = 0;
     static int time_cnt = 0;  // 周期计数，控制动作间隔
     static int time_cnt2 = 0; // 周期计数，控制动作间隔
-    static bool offset_flag{false};
-    static bool end_flag{true};
+    static bool offset_flag{ false };
+    static bool end_flag{ true };
 
     //=====================结束碰钉 ==========================
     if (execute == -1)
@@ -528,8 +528,8 @@ bool DoubleToolsDoWeldAction(int execute)
     static quint8 index_act = 0;
     static int time_cnt = 0;  // 周期计数，控制动作间隔
     static int time_cnt2 = 0; // 周期计数，控制动作间隔
-    static bool offset_flag{false};
-    static bool end_flag{true};
+    static bool offset_flag{ false };
+    static bool end_flag{ true };
 
     //=====================结束碰钉 ==========================
     if (execute == -1)
@@ -630,8 +630,8 @@ void Loop()
 {
     auto log = spdlog::get("logger");
     auto begin = std::chrono::steady_clock::now();
-    int execute{1};
-    int cnt{1};
+    int execute{ 1 };
+    int cnt{ 1 };
     while (true)
     {
         //      cnt++;
@@ -645,13 +645,12 @@ void Loop()
             auto duration = std::chrono::steady_clock::now() - begin;
             log->warn("whole duration: {} (s)\n exit from loop...", std::chrono::duration_cast<std::chrono::seconds>(duration).count());
             std::vector<std::pair<std::string, int>> container;
-            for (const auto &it : ValueMap)
+            for (const auto& it : ValueMap)
             {
                 container.push_back(std::make_pair(it.first, it.second));
             }
-            std::stable_sort(container.begin(), container.end(), [](std::pair<std::string, int> a, std::pair<std::string, int> b)
-                             { return a.second > b.second; });
-            for (const auto &it : container)
+            std::stable_sort(container.begin(), container.end(), [](std::pair<std::string, int> a, std::pair<std::string, int> b) { return a.second > b.second; });
+            for (const auto& it : container)
             {
                 log->info("timestamp: {}, value count: {}", it.first, it.second);
             }

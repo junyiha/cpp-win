@@ -1,7 +1,7 @@
 /*****************************************************************//**
  * \file   base_headers.hpp
- * \brief  
- * 
+ * \brief
+ *
  * \author anony
  * \date   October 2024
  *********************************************************************/
@@ -16,7 +16,7 @@
 #include <sstream>
 #include <algorithm>
 
-// spdlog
+ // spdlog
 #include "spdlog/spdlog.h"
 #include "spdlog/async.h"
 #include "spdlog/sinks/stdout_color_sinks.h"

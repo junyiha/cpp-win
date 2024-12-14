@@ -1,7 +1,7 @@
 /*****************************************************************//**
  * \file   application.hpp
- * \brief  
- * 
+ * \brief
+ *
  * \author anony
  * \date   October 2024
  *********************************************************************/
@@ -60,7 +60,7 @@ namespace APP
 		void SendDataButtonClicked();
 
 	private:
-		Ui::NewMainWindow *ui;
+		Ui::NewMainWindow* ui;
 		int m_index{ 0 };
 		std::shared_ptr<spdlog::logger> m_log;
 	};

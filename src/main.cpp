@@ -12,6 +12,9 @@
 #include "configuration.hpp"
 #include "counter_event.hpp"
 
+#include "boost/filesystem.hpp"
+#include "boost/asio.hpp"
+
 void TestEncoding()
 {
 	QString str("中文");
@@ -31,7 +34,7 @@ void TestException()
 	{
 		std::cerr << arr.at(3) << "\n";
 	}
-	catch (std::out_of_range &e)
+	catch (std::out_of_range& e)
 	{
 		std::cerr << e.what() << "\n";
 	}
@@ -49,7 +52,7 @@ enum E_LinkState
 
 void TestCRobot()
 {
-	E_LinkState state{eLINK_ERRORSTOP};
+	E_LinkState state{ eLINK_ERRORSTOP };
 	int temp = 7;
 
 	memcpy(&state, &temp, sizeof(temp));
@@ -57,19 +60,47 @@ void TestCRobot()
 	std::cerr << state << "\n";
 }
 
-int main(int argc, char *argv[])
+void TestQVector()
+{
+
+}
+
+void TestBoostSystem()
+{
+
+}
+
+void TestBoostFilesystem()
+{
+	boost::filesystem::path dir("D:/BaiduNetdiskDownload");
+	for (auto& entry : boost::filesystem::directory_iterator(dir))
+	{
+		std::cerr << entry.path().string() << "\n";
+	}
+}
+
+void AsioServer()
+{
+	using tcp = boost::asio::ip::tcp;
+
+	boost::asio::io_context io_context;
+
+	tcp::acceptor acceptor(io_context, tcp::endpoint(tcp::v4(), 1234));
+
+	tcp::socket socket(io_context);
+	acceptor.accept(socket);
+
+	std::string message{ "Hello from server" };
+	boost::asio::write(socket, boost::asio::buffer(message));
+
+	return;
+}
+
+int main(int argc, char* argv[])
 {
 	InitLogger();
 	auto log = spdlog::get("logger");
-	std::string mode{"robot"};
-
-	TestCRobot();
-	// TestException();
-	// TestEncoding();
-	// Loop();
-	return 0;
-	// return Config::ConfigurationMain();
-	// return APP::RunAPP(argc, argv);
+	std::string mode{ "robot" };
 
 	cxxopts::Options options("Robot", "robot");
 	options.add_options()("m,mode", "mode", cxxopts::value<std::string>());
@@ -93,6 +124,14 @@ int main(int argc, char *argv[])
 	}
 	else if (mode == "help")
 	{
+	}
+	else if (mode == "filesystem")
+	{
+		TestBoostFilesystem();
+	}
+	else if (mode == "tcp_server")
+	{
+		AsioServer();
 	}
 	else
 	{
