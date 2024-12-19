@@ -15,6 +15,7 @@
 #include <iomanip>
 #include <sstream>
 #include <algorithm>
+#include <memory>
 
  // spdlog
 #include "spdlog/spdlog.h"
