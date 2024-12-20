@@ -53,13 +53,15 @@ namespace net
 
         std::vector<char> Read();
 
+        bool IsConnect() { return is_connect.load(); }
+
     private:
         void do_connect();
 
     private:
         asio::io_context& io_context_;
         tcp::socket socket_;
-        std::atomic<bool> is_connect;
+        std::atomic<bool> is_connect{ false };
         tcp::endpoint endpoint_;
     };
 }  // namespace net

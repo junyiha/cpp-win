@@ -82,55 +82,6 @@ int TestBoostFilesystem(int argc, char* argv[])
 	return 0;
 }
 
-void DoSession(asio::ip::tcp::socket socket)
-{
-	std::vector<char> buffer(10 * 1024);
-	while (true)
-	{
-		try
-		{
-			std::size_t read_size = socket.read_some(asio::buffer(buffer.data(), buffer.size()));
-			std::string recv_msg(buffer.data(), read_size);
-			std::cerr << "receive data: " << recv_msg << "\n";
-			recv_msg += recv_msg;
-			socket.write_some(asio::buffer(recv_msg.data(), recv_msg.size()));
-		}
-		catch (asio::system_error& e)
-		{
-			std::cerr << "catch exception, message: " << e.what() << "\n";
-			break;
-		}
-	}
-}
-
-void ServerHandler(const asio::error_code& ec, asio::ip::tcp::socket peer)
-{
-	if (!ec)
-	{
-		new std::thread(DoSession, std::move(peer));
-	}
-
-	// 回调接收链接
-}
-
-int AsioServer(int argc, char* argv[])
-{
-	using tcp = asio::ip::tcp;
-
-	asio::io_context io_context;
-	asio::error_code ec;
-	tcp::acceptor acceptor(io_context, tcp::endpoint(asio::ip::tcp::v4(), 9990));
-
-	acceptor.async_accept(io_context, ServerHandler);
-
-	while (true)
-	{
-		io_context.run();
-	}
-
-	return 0;
-}
-
 int TestClassServer(int argc, char* argv[])
 {
 	asio::io_context io_context;
@@ -152,11 +103,16 @@ int TestClassClient(int argc, char* argv[])
 	auto address = asio::ip::make_address("127.0.0.1");
 	asio::ip::tcp::endpoint endpoint(address, 9990);
 	net::Client client(io_context, endpoint);
-	std::thread t([&io_context]() { io_context.run(); });
+	std::thread t([&io_context]() { while (true) { io_context.run(); }});
 
 	std::vector<char> buf(1024);
 	while (true)
 	{
+		if (!client.IsConnect())
+		{
+			std::this_thread::sleep_for(std::chrono::seconds(1));
+			continue;
+		}
 		std::cerr << "input message: \n";
 		std::cin.getline(buf.data(), buf.size());
 		client.Write(buf);
@@ -166,71 +122,10 @@ int TestClassClient(int argc, char* argv[])
 	return 0;
 }
 
-void connect_handler(const asio::error_code& error)
-{
-	if (!error)
-	{
-		std::cerr << "connect succeeded\n";
-	}
-	else
-	{
-		std::cerr << "connect failed\n";
-	}
-}
-
-void DoConnect(asio::ip::tcp::socket& socket)
-{
-	auto address = asio::ip::make_address("127.0.0.1");
-	asio::ip::tcp::endpoint endpoint(address, 9990);
-	asio::error_code ec;
-	socket.async_connect(endpoint, connect_handler);
-}
-
-int AsioClient(int argc, char* argv[])
-{
-	asio::io_context io_context;
-	asio::ip::tcp::socket socket(io_context);
-	DoConnect(socket);
-
-	io_context.post([&]() {
-		std::vector<char> buf(10 * 1024);
-		asio::error_code ec;
-		while (true)
-		{
-			std::string msg;
-			std::cerr << "input send message: \n";
-			std::cin >> msg;
-			// std::this_thread::sleep_for(std::chrono::seconds(1));
-			bool temp_res = socket.is_open();
-			if (!temp_res)
-			{
-				std::this_thread::sleep_for(std::chrono::seconds(1));
-				std::cerr << "reconnect to server\n";
-				DoConnect(socket);
-				continue;
-			}
-
-			socket.write_some(asio::buffer(msg.data(), msg.size()));
-			asio::error_code ec;
-			std::size_t recv_size;
-			recv_size = socket.read_some(asio::buffer(buf.data(), buf.size()));
-			std::cerr << "receive data: " << std::string(buf.data(), recv_size) << "\n";
-		}
-	});
-
-	std::thread io_thread([&]() {io_context.run(); });
-
-	io_thread.join();
-
-	return 0;
-}
-
 int main(int argc, char* argv[])
 {
 	std::map<std::string, std::function<int(int, char**)>> FuncMap =
 	{
-		{"server", AsioServer},
-		{"client", AsioClient},
 		{"test_encoding", TestEncoding},
 		{"test_exception", TestException},
 		{"test_crobot", TestCRobot},

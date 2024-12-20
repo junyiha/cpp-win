@@ -66,7 +66,6 @@ namespace net
             {
                 std::cerr << "connect failed\n";
                 is_connect.store(false);
-                std::this_thread::sleep_for(std::chrono::seconds(1));
                 do_connect();
             }
         });
@@ -77,6 +76,7 @@ namespace net
         if (!is_connect.load())
         {
             std::cerr << "fatal error: not connect\n";
+            do_connect();
             return;
         }
         try
@@ -86,6 +86,8 @@ namespace net
         catch (asio::system_error& e)
         {
             std::cerr << "catch exception, message: " << e.what() << "\n";
+            is_connect.store(false);
+            socket_.close();
         }
     }
 
@@ -95,16 +97,19 @@ namespace net
         if (!is_connect.load())
         {
             std::cerr << "fatal error: not connect\n";
+            do_connect();
             return recv_data;
         }
         try
         {
             std::size_t len = socket_.read_some(asio::buffer(recv_data.data(), recv_data.size()));
-            recv_data.shrink_to_fit();
+            recv_data.resize(len);
         }
         catch (asio::system_error& e)
         {
             std::cerr << "catch exception, message: " << e.what() << "\n";
+            is_connect.store(false);
+            socket_.close();
         }
 
         return recv_data;
