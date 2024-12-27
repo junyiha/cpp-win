@@ -122,6 +122,11 @@ int TestClassClient(int argc, char* argv[])
 	return 0;
 }
 
+int TestApplication(int argc, char* argv[])
+{
+	return APP::RunAPP(argc, argv);
+}
+
 int main(int argc, char* argv[])
 {
 	std::map<std::string, std::function<int(int, char**)>> FuncMap =
@@ -132,7 +137,8 @@ int main(int argc, char* argv[])
 		{"test_qvector", TestQVector},
 		{"test_boost", TestBoostFilesystem},
 		{"TestClassServer", TestClassServer},
-		{"TestClassClient", TestClassClient}
+		{"TestClassClient", TestClassClient},
+		{"TestApplication", TestApplication}
 	};
 
 	InitLogger();
