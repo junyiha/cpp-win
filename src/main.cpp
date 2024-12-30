@@ -12,6 +12,7 @@
 #include "configuration.hpp"
 #include "counter_event.hpp"
 #include "asio_network.hpp"
+#include "onnxruntime.hpp"
 
 #include "boost/filesystem.hpp"
 #include "boost/asio.hpp"
@@ -127,6 +128,18 @@ int TestApplication(int argc, char* argv[])
 	return APP::RunAPP(argc, argv);
 }
 
+int TestOnnxRuntime(int argc, char* argv[])
+{
+	LoadModel();
+	return 0;
+}
+
+int TestShowImage(int argc, char* argv[])
+{
+	ShowImage("C:/Users/anony/Documents/GitHub/cpp-win/data/1.jpg");
+	return 0;
+}
+
 int main(int argc, char* argv[])
 {
 	std::map<std::string, std::function<int(int, char**)>> FuncMap =
@@ -138,7 +151,9 @@ int main(int argc, char* argv[])
 		{"test_boost", TestBoostFilesystem},
 		{"TestClassServer", TestClassServer},
 		{"TestClassClient", TestClassClient},
-		{"TestApplication", TestApplication}
+		{"TestApplication", TestApplication},
+		{"TestOnnxRuntime", TestOnnxRuntime},
+		{"TestShowImage", TestShowImage}
 	};
 
 	InitLogger();

@@ -30,9 +30,15 @@ find_package(Qt5 COMPONENTS
         Xml
         REQUIRED)
 
+# boost
 find_package(Boost 1.86 REQUIRED COMPONENTS system filesystem PATHS "${BaseDIR}/packages/boost_1_86_0/lib/cmake/" )
-
 message(${Boost_INCLUDE_DIRS})
+
+# opencv
+find_package(OpenCV REQUIRED PATHS "${BaseDIR}/packages/OpenCV4.8.0/opencv/build/x64/vc16/lib/" NO_DEFAULT_PATH)
+message(${OpenCV_INCLUDE_DIRS})
+
+file(COPY ${BaseDIR}/packages/OpenCV4.8.0/opencv/build/x64/vc16/bin/opencv_world480d.dll DESTINATION ${CMAKE_BINARY_DIR}/Debug/)
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/ThirdParty/yaml-cpp-0.8.0)
 
@@ -49,6 +55,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/src
                                                    ${CMAKE_SOURCE_DIR}/ThirdParty/CLI11-2.4.2/include/
                                                    ${CMAKE_SOURCE_DIR}/ThirdParty/asio-1.30.2/include
                                                    ${Boost_INCLUDE_DIRS}/boost_1_86_0/include/boost-1_86/
+                                                   ${OpenCV_INCLUDE_DIRS}
 						)
 
 # qt5
@@ -58,7 +65,12 @@ target_link_libraries(${PROJECT_NAME} Qt5::Core
                                       Qt5::Network
                                       Qt5::Xml
                                       ${Boost_LIBRARIES}
+                                      ${OpenCV_LIBS}
 )
 
 # yaml-0.8.0
 target_link_libraries(${PROJECT_NAME} yaml-cpp::yaml-cpp)
+
+# onnxruntime
+target_include_directories(${PROJECT_NAME} PRIVATE D:/packages/OnnxRuntime/Microsoft.ML.OnnxRuntime.1.7.0/build/native/include/)
+target_link_libraries(${PROJECT_NAME} D:/packages/OnnxRuntime/Microsoft.ML.OnnxRuntime.1.7.0/runtimes/win-x64/native/onnxruntime.lib)
