@@ -72,7 +72,9 @@ void LoadModel()
 {
     Ort::Env env(ORT_LOGGING_LEVEL_WARNING, "test");
     Ort::SessionOptions session_options;
-    Ort::Session session(env, L"C:/Users/anony/Documents/GitHub/cpp-win/data/ppseg_model_wb_20241120.onnx", session_options);
+    std::wstring model_path{ L"D:/Robot/models/pp_liteseg_stdc1_softmax_20241021.onnx" };
+    model_path = L"C:/Users/anony/Documents/GitHub/cpp-win/data/ppseg_model_wb_20241120.onnx";
+    Ort::Session session(env, model_path.c_str(), session_options);
 
     std::size_t num_input_nodes = session.GetInputCount();
     std::size_t num_output_nodes = session.GetOutputCount();
@@ -119,8 +121,8 @@ void LoadModel()
         std::cerr << "\n";
     }
 
-    // std::string image_path{ "C:/Users/anony/Documents/GitHub/cpp-win/data/LineCam_6_2024-12-23-15-59-55.png" };
-    std::string image_path{ "C:/Users/anony/Documents/GitHub/cpp-win/data/LineCam_3_2024-12-23-15-59-54.png" };
+    std::string image_path{ "C:/Users/anony/Documents/GitHub/cpp-win/data/LineCam_6_2024-12-23-15-59-55.png" };
+    // std::string image_path{ "C:/Users/anony/Documents/GitHub/cpp-win/data/LineCam_3_2024-12-23-15-59-54.png" };
 
     cv::Mat image = cv::imread(image_path);
     if (image.empty())
@@ -128,6 +130,8 @@ void LoadModel()
         std::cerr << "load image failed\n";
         return;
     }
+    cv::Mat image_gray = image.clone();
+    cv::resize(image_gray, image_gray, cv::Size(input_shape.at(2), input_shape.at(3)));
     if (image.channels() != 3)
     {
         cv::cvtColor(image, image, cv::COLOR_GRAY2BGR);
@@ -230,15 +234,15 @@ void LoadModel()
         }
 
         cv::Point2f p1((possible_lines.at(i).at(0).x + possible_lines.at(i).at(1).x) / 2, (possible_lines.at(i).at(0).y + possible_lines.at(i).at(1).y) / 2);
-        if (p1.x + 30 > image.cols || p1.y + 30 > image.rows)
+        if (p1.x + 30 > image_gray.cols || p1.y + 30 > image_gray.rows)
         {
             continue;
         }
 
         cv::Rect rect(p1.x, p1.y, 30, 30);
-        cv::Mat roi = image(rect);
+        cv::Mat roi = image_gray(rect);
         double mean_color = cv::mean(roi)[0];
-        if (mean_color < 180)
+        if (mean_color > 180)
         {
             continue;
         }
@@ -274,12 +278,8 @@ void LoadModel()
     cv::line(image, cv::Point(line_res.at(0), line_res.at(1)), cv::Point(line_res.at(2), line_res.at(3)), cv::Scalar(0, 0, 255), 2);
 
     possible_lines = GetPossibleLines(inkMask);
-    double dgree_ref = atan(line_res.at(3) - line_res.at(1) / line_res.at(2) - line_res.at(0)) * 180 / CV_PI;
-    if (dgree_ref <= 0)
-    {
-        return;
-    }
-    max_index = -1;
+    double dgree_ref = atan((line_res.at(3) - line_res.at(1)) / (line_res.at(2) - line_res.at(0))) * 180 / CV_PI;
+
     double min_dist = 100000;
     int min_index = -1;
     for (int i = 0; i < possible_lines.size(); i++)
