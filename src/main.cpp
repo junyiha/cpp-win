@@ -13,6 +13,7 @@
 #include "counter_event.hpp"
 #include "asio_network.hpp"
 #include "onnxruntime.hpp"
+#include "openvino.hpp"
 
 #include "boost/filesystem.hpp"
 #include "boost/asio.hpp"
@@ -140,6 +141,13 @@ int TestShowImage(int argc, char* argv[])
 	return 0;
 }
 
+int TestOpenVINO(int argc, char* argv[])
+{
+	TestOpenVino();
+
+	return 0;
+}
+
 int main(int argc, char* argv[])
 {
 	std::map<std::string, std::function<int(int, char**)>> FuncMap =
@@ -153,7 +161,8 @@ int main(int argc, char* argv[])
 		{"TestClassClient", TestClassClient},
 		{"TestApplication", TestApplication},
 		{"TestOnnxRuntime", TestOnnxRuntime},
-		{"TestShowImage", TestShowImage}
+		{"TestShowImage", TestShowImage},
+		{"TestOpenVINO", TestOpenVINO}
 	};
 
 	InitLogger();

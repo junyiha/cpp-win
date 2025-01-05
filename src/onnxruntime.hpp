@@ -14,6 +14,26 @@
 #include "onnxruntime_cxx_api.h"
 #include "opencv2/opencv.hpp"
 
+struct Context_t
+{
+    Ort::Env* env;
+    Ort::Session* session;
+    std::vector<char*> input_names;
+    std::vector<char*> output_names;
+    std::vector<int64_t> input_shape;
+    std::vector<int64_t> output_shape;
+};
+
+class Detector
+{
+
+public:
+    bool Create(std::string id, std::wstring path);
+
+private:
+    std::map<std::string, Context_t> m_detector_map;
+};
+
 void LoadModel();
 
 void ShowImage(const std::string& image_path);

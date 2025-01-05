@@ -22,6 +22,8 @@ file(COPY ${CMAKE_PREFIX_PATH}/bin/Qt5Widgets.dll DESTINATION ${CMAKE_BINARY_DIR
 file(COPY ${CMAKE_PREFIX_PATH}/bin/Qt5Widgetsd.dll DESTINATION ${CMAKE_BINARY_DIR}/Debug/)
 file(COPY ${CMAKE_PREFIX_PATH}/plugins/platforms DESTINATION ${CMAKE_BINARY_DIR}/Debug//plugins/)
 
+file(COPY D:/packages/OnnxRuntime/Microsoft.ML.OnnxRuntime.1.7.0/runtimes/win-x64/native/onnxruntime.lib DESTINATION ${CMAKE_BINARY_DIR}/Debug/)
+
 find_package(Qt5 COMPONENTS
         Core
         Gui
@@ -37,6 +39,15 @@ message(${Boost_INCLUDE_DIRS})
 # opencv
 find_package(OpenCV REQUIRED PATHS "${BaseDIR}/packages/OpenCV4.8.0/opencv/build/x64/vc16/lib/" NO_DEFAULT_PATH)
 message(${OpenCV_INCLUDE_DIRS})
+
+# openvino
+find_package(OpenVINO REQUIRED PATHS "C:/Intel/openvino_2024.6.0/runtime/cmake/")
+if (OpenVINO_FOUND)
+    message(STATUS "openvino found")
+else()
+    message(STATUS "openvino not found")
+endif()
+message(STATUS "openvino include dir: ${OpenVINO_INCLUDE_DIRS}")
 
 file(COPY ${BaseDIR}/packages/OpenCV4.8.0/opencv/build/x64/vc16/bin/opencv_world480d.dll DESTINATION ${CMAKE_BINARY_DIR}/Debug/)
 
@@ -56,6 +67,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/src
                                                    ${CMAKE_SOURCE_DIR}/ThirdParty/asio-1.30.2/include
                                                    ${Boost_INCLUDE_DIRS}/boost_1_86_0/include/boost-1_86/
                                                    ${OpenCV_INCLUDE_DIRS}
+                                                   ${OpenVINO_INCLUDE_DIRS}
 						)
 
 # qt5
@@ -66,6 +78,7 @@ target_link_libraries(${PROJECT_NAME} Qt5::Core
                                       Qt5::Xml
                                       ${Boost_LIBRARIES}
                                       ${OpenCV_LIBS}
+                                      openvino::runtime
 )
 
 # yaml-0.8.0
