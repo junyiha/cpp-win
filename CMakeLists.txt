@@ -33,8 +33,13 @@ find_package(Qt5 COMPONENTS
         REQUIRED)
 
 # boost
-find_package(Boost 1.86 REQUIRED COMPONENTS system filesystem PATHS "${BaseDIR}/packages/boost_1_86_0/lib/cmake/" )
-message(${Boost_INCLUDE_DIRS})
+find_package(Boost 1.86 COMPONENTS system filesystem PATHS "${BaseDIR}/packages/boost_1_86_0/lib/cmake/" )
+if (Boost_FOUND)
+    message(STATUS "boost found")
+    add_definitions(-DBOOST_FLAG)
+else()
+    message(STATUS "boost not found")
+endif()
 
 # opencv
 find_package(OpenCV REQUIRED PATHS "${BaseDIR}/packages/OpenCV4.8.0/opencv/build/x64/vc16/lib/" NO_DEFAULT_PATH)
@@ -65,10 +70,12 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/src
                                                    ${CMAKE_SOURCE_DIR}/ThirdParty/cxxopts-3.2.0/include/
                                                    ${CMAKE_SOURCE_DIR}/ThirdParty/CLI11-2.4.2/include/
                                                    ${CMAKE_SOURCE_DIR}/ThirdParty/asio-1.30.2/include
-                                                   ${Boost_INCLUDE_DIRS}/boost_1_86_0/include/boost-1_86/
                                                    ${OpenCV_INCLUDE_DIRS}
                                                    ${OpenVINO_INCLUDE_DIRS}
+                                                   ${Qt5Core_INCLUDE_DIRS}
+                                                   D:/Qt514/5.14.0/msvc2017_64/include/
 						)
+message(STATUS "Qt5Core_INCLUDE_DIRS： ${Qt5Core_INCLUDE_DIRS}")
 
 # qt5
 target_link_libraries(${PROJECT_NAME} Qt5::Core
@@ -76,10 +83,14 @@ target_link_libraries(${PROJECT_NAME} Qt5::Core
                                       Qt5::Widgets
                                       Qt5::Network
                                       Qt5::Xml
-                                      ${Boost_LIBRARIES}
                                       ${OpenCV_LIBS}
                                       openvino::runtime
 )
+
+if (Boost_FOUND)
+    target_include_directories(${PROJECT_NAME} PRIVATE ${Boost_INCLUDE_DIRS}/boost_1_86_0/include/boost-1_86/)
+    target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})
+endif()
 
 # yaml-0.8.0
 target_link_libraries(${PROJECT_NAME} yaml-cpp::yaml-cpp)
