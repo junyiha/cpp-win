@@ -16,8 +16,10 @@
 #include "openvino.hpp"
 #include "libevent.hpp"
 
+#if BOOST_FLAG
 #include "boost/filesystem.hpp"
 #include "boost/asio.hpp"
+#endif
 
 #include "asio.hpp"
 
@@ -75,6 +77,7 @@ int TestQVector(int argc, char* argv[])
 	return 0;
 }
 
+#ifdef BOOST_FLAG
 int TestBoostFilesystem(int argc, char* argv[])
 {
 	boost::filesystem::path dir("D:/BaiduNetdiskDownload");
@@ -84,6 +87,7 @@ int TestBoostFilesystem(int argc, char* argv[])
 	}
 	return 0;
 }
+#endif
 
 int TestClassServer(int argc, char* argv[])
 {
@@ -165,7 +169,9 @@ int main(int argc, char* argv[])
 		{"test_exception", TestException},
 		{"test_crobot", TestCRobot},
 		{"test_qvector", TestQVector},
+		#ifdef BOOST_FLAG
 		{"test_boost", TestBoostFilesystem},
+		#endif
 		{"TestClassServer", TestClassServer},
 		{"TestClassClient", TestClassClient},
 		{"TestApplication", TestApplication},
