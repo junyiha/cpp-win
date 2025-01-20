@@ -11,6 +11,7 @@ set(CMAKE_PREFIX_PATH "D:/Qt514/5.14.0/msvc2017_64")
 set(BaseDIR D:/)
 
 add_compile_options(/W0)
+add_compile_options(/MP)
 add_definitions(-DROOT_PATH="${CMAKE_SOURCE_DIR}")
 
 # Qt
@@ -23,6 +24,13 @@ file(COPY ${CMAKE_PREFIX_PATH}/bin/Qt5Widgetsd.dll DESTINATION ${CMAKE_BINARY_DI
 file(COPY ${CMAKE_PREFIX_PATH}/plugins/platforms DESTINATION ${CMAKE_BINARY_DIR}/Debug//plugins/)
 
 file(COPY D:/packages/OnnxRuntime/Microsoft.ML.OnnxRuntime.1.7.0/runtimes/win-x64/native/onnxruntime.lib DESTINATION ${CMAKE_BINARY_DIR}/Debug/)
+file(COPY ${CMAKE_SOURCE_DIR}/ThirdParty/libevent/lib/event_core.lib DESTINATION ${CMAKE_BINARY_DIR}/Debug/)
+file(COPY ${CMAKE_SOURCE_DIR}/ThirdParty/libevent/lib/event_extra.lib DESTINATION ${CMAKE_BINARY_DIR}/Debug/)
+file(COPY ${CMAKE_SOURCE_DIR}/ThirdParty/libevent/lib/event.lib DESTINATION ${CMAKE_BINARY_DIR}/Debug/)
+
+file(COPY ${CMAKE_SOURCE_DIR}/ThirdParty/libevent/bin/event_core.dll DESTINATION ${CMAKE_BINARY_DIR}/Debug/)
+file(COPY ${CMAKE_SOURCE_DIR}/ThirdParty/libevent/bin/event_extra.dll DESTINATION ${CMAKE_BINARY_DIR}/Debug/)
+file(COPY ${CMAKE_SOURCE_DIR}/ThirdParty/libevent/bin/event.dll DESTINATION ${CMAKE_BINARY_DIR}/Debug/)
 
 find_package(Qt5 COMPONENTS
         Core
@@ -51,7 +59,10 @@ message(STATUS "openvino include dir: ${OpenVINO_INCLUDE_DIRS}")
 
 file(COPY ${BaseDIR}/packages/OpenCV4.8.0/opencv/build/x64/vc16/bin/opencv_world480d.dll DESTINATION ${CMAKE_BINARY_DIR}/Debug/)
 
+# yaml
 add_subdirectory(${CMAKE_SOURCE_DIR}/ThirdParty/yaml-cpp-0.8.0)
+
+link_directories(${CMAKE_SOURCE_DIR}/ThirdParty/libevent/lib)
 
 aux_source_directory(${CMAKE_SOURCE_DIR}/src src_files)
 
@@ -68,6 +79,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/src
                                                    ${Boost_INCLUDE_DIRS}/boost_1_86_0/include/boost-1_86/
                                                    ${OpenCV_INCLUDE_DIRS}
                                                    ${OpenVINO_INCLUDE_DIRS}
+                                                   ${CMAKE_SOURCE_DIR}/ThirdParty/libevent/include/
 						)
 
 # qt5
@@ -79,11 +91,13 @@ target_link_libraries(${PROJECT_NAME} Qt5::Core
                                       ${Boost_LIBRARIES}
                                       ${OpenCV_LIBS}
                                       openvino::runtime
+                                      event_core
+                                      event_extra
+                                      event
 )
 
 # yaml-0.8.0
 target_link_libraries(${PROJECT_NAME} yaml-cpp::yaml-cpp)
 
-# onnxruntime
 target_include_directories(${PROJECT_NAME} PRIVATE D:/packages/OnnxRuntime/Microsoft.ML.OnnxRuntime.1.7.0/build/native/include/)
 target_link_libraries(${PROJECT_NAME} D:/packages/OnnxRuntime/Microsoft.ML.OnnxRuntime.1.7.0/runtimes/win-x64/native/onnxruntime.lib)
