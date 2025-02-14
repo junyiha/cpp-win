@@ -365,6 +365,7 @@ void LoadModel()
     }
 
     cv::Mat image_gray, image_rgb, blob;
+    auto begin = std::chrono::steady_clock::now();
     Preprocess(image, ctx.input_shape, image_rgb, image_gray, blob);
     image = image_rgb;
 
@@ -379,6 +380,8 @@ void LoadModel()
         std::cerr << "Postprocess failed\n";
         return;
     }
+    auto end = std::chrono::steady_clock::now();
+    std::cerr << "infer time: " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "ms\n";
 
     cv::line(image, cv::Point(refer_line.at(0), refer_line.at(1)), cv::Point(refer_line.at(2), refer_line.at(3)), cv::Scalar(0, 0, 255), 2);
     cv::line(image, cv::Point(ink_line.at(0), ink_line.at(1)), cv::Point(ink_line.at(2), ink_line.at(3)), cv::Scalar(0, 255, 0), 2);
