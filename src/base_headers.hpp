@@ -16,6 +16,7 @@
 #include <sstream>
 #include <algorithm>
 #include <memory>
+#include <condition_variable>
 
  // spdlog
 #include "spdlog/spdlog.h"

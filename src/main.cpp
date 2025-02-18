@@ -15,6 +15,7 @@
 #include "onnxruntime.hpp"
 #include "openvino.hpp"
 #include "libevent.hpp"
+#include "multi_thread.hpp"
 
 #if BOOST_FLAG
 #include "boost/filesystem.hpp"
@@ -161,6 +162,26 @@ int TestLibevent(int argc, char* argv[])
 	return 0;
 }
 
+int TestMultiThread(int argc, char* argv[])
+{
+	Task task;
+	// task.CreateTask();
+
+	// task.ThreadExitWithoutJoin();
+
+	// task.JoinTask();
+
+	task.TaskWithConditionVariable();
+
+	while (true)
+	{
+		std::cerr << task.GetStatus() << "\n";
+		std::this_thread::sleep_for(std::chrono::seconds(1));
+	}
+
+	return 0;
+}
+
 int main(int argc, char* argv[])
 {
 	std::map<std::string, std::function<int(int, char**)>> FuncMap =
@@ -178,7 +199,8 @@ int main(int argc, char* argv[])
 		{"TestOnnxRuntime", TestOnnxRuntime},
 		{"TestShowImage", TestShowImage},
 		{"TestOpenVINO", TestOpenVINO},
-		{"TestLibevent", TestLibevent}
+		{"TestLibevent", TestLibevent},
+		{"TestMultiThread", TestMultiThread}
 	};
 
 	InitLogger();
